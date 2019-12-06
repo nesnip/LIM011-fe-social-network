@@ -6,10 +6,8 @@ export default () =>{
     <input type="text"> Email
     <input type="text"> Password
     <button> Sign In </button>
-    </form>`;
-    divElemt.classList.add('position')
+    </form>`
     form.innerHtml = formContent;
     return form;
-
 
 }
