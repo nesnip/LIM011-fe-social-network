@@ -22,6 +22,7 @@ enviar.addEventListener('click', () => {
     const errorCode = error.code;
     const errorMessage = error.message;
     alert(errorMessage);
+    console.log(errorCode);
   });
 });
 // firebase.analytics();
