@@ -1,22 +1,22 @@
+import { signUpOnSubmit } from "../view-controller.js";
+
 export default () => {
   const form = document.createElement('form');
   const formContent = `
-    <form class="login-container">
-    <h2> FitnesSpace </h2>
-    <input type="text"> Email
-    <input type="text"> Password
-    <button> Sign In </button>
-<<<<<<< HEAD
-    </form>`
-    form.innerHtml = formContent;
-    return form;
+   <div class = "container-form">
+    <form class="formulario">
+      <h2>Sign up</h2>
+        <input type="email" id="email" placeholder = "Ingrese E-mail">
+        <input type="password" id="password" placeholder = "Ingrese Contraseña">
+      <button id="btn-signUp" type="button"> Sign In </button>
+    </form>
+    </div>
+  `;
+  
+  form.innerHTML = formContent;
 
-}
-=======
-    </form>`;
-  divElemt.classList.add('position');
-  form.innerHtml = formContent;
+  // selecccionando elementos del DOM
+  const btnSignUp = form.querySelector('#btn-signUp');
+  btnSignUp.addEventListener('click', signUpOnSubmit);
   return form;
 }
-;
->>>>>>> def91fe1c8177519601889f9a568b34f1534a5d0

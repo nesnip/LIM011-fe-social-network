@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
-import { example } from './example.js';
+/*import { example } from './example.js';
 
 example();
 
 // ESTE ES UN COMENTARIO
-// Este es otro comentario
+// Este es otro comentario*/

@@ -1,0 +1,33 @@
+form{
+    background: rgb(226, 226, 220);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ .container-form {
+    width: 290px;
+    height: 280px;
+    align-content: center;
+    border-radius: 9px;
+    border-style: solid;
+    border-color:rgb(177, 2, 177) ;  
+    background-color: rgb(204, 173, 233);
+    text-align: center; 
+    justify-content: center;
+}
+ #password , #email {
+    display: block;
+    margin-left: 15px;
+    margin-bottom: 8px;
+    padding-left: 5px;
+    width: 250px;
+    height: 40px;
+    border-style: solid;
+    border-color:rgb(82, 100, 181) ;  
+}
+#btn-signUp{
+    margin-top: 15px;
+    width: 250px;
+    height: 40px;   
+    background-color: rgb(255, 53, 94);
+}
