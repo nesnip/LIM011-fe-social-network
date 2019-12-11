@@ -1,12 +1,18 @@
-import Login from './view/login.js';
-
+import SignIn from './view/signin.js';
+import LogIn from './view/login.js';
+import Home from './view/home.js';
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
-      return viewTmp('#/signUp');
-    } else if (hash === '#/signUp' || hash === '#/home') {
+      return viewTmp('#/LogIn');
+    }else if (hash ==='#SignIn'){
+      return viewTmp('#/SignIn');
+    } else if (hash ==='#/Home'){
+      return viewTmp('#/Home');
+    } 
+     else if (hash === '#/LogIn' || hash === '#/SignIn' || hash === '#/Home') {
       return viewTmp(hash);
     } else {
-      return viewTmp('#/signUp');
+      return viewTmp('#/LogIn');
     }
   }
   
@@ -15,12 +21,15 @@ const changeTmp = (hash) => {
     const root = document.getElementById('root');
     root.innerHTML = '';
     switch (router) {
-      case 'signUp':
-        root.appendChild(Login());
+      case 'LogIn':
+        root.appendChild(LogIn());
         break;
-      default:
-        root.appendChild(Login());
+        case 'SignIn':
+          root.appendChild(SignIn());
         break;
+        case 'Home':
+          root.appendChild(Home());
+          break;
     }
   }
   

@@ -15,7 +15,7 @@ form{
     text-align: center; 
     justify-content: center;
 }
- #password , #email {
+ .txt-form{
     display: block;
     margin-left: 15px;
     margin-bottom: 8px;
@@ -25,7 +25,7 @@ form{
     border-style: solid;
     border-color:rgb(82, 100, 181) ;  
 }
-#btn-signUp{
+.btn-form{
     margin-top: 15px;
     width: 250px;
     height: 40px;   

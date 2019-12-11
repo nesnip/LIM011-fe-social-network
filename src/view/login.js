@@ -1,22 +1,23 @@
-import { signUpOnSubmit } from "../view-controller.js";
-
+import { logInOnSubmit } from "../view-controller.js";
 export default () => {
-  const form = document.createElement('form');
-  const formContent = `
-   <div class = "container-form">
-    <form class="formulario">
-      <h2>Sign up</h2>
-        <input type="email" id="email" placeholder = "Ingrese E-mail">
-        <input type="password" id="password" placeholder = "Ingrese Contraseña">
-      <button id="btn-signUp" type="button"> Sign In </button>
-    </form>
-    </div>
-  `;
+    const formLogin = document.createElement('form');
+    const formContent = `
+     <div class = "container-form">
+      <form class="formulario">
+        <h2>Log in</h2>
+          <input type="email" class="txt-form" id="email-login" placeholder = "Ingrese E-mail">
+          <input type="password" class="txt-form" id="password-login" placeholder = "Ingrese Contraseña">
+        <button class="btn-form" id="btn-login" type="button"> Log in </button>
+        <a href="#SignIn"> Register here </a>
+      </form>
+      </div>
+    `;
+    
+    formLogin.innerHTML = formContent;
   
-  form.innerHTML = formContent;
-
-  // selecccionando elementos del DOM
-  const btnSignUp = form.querySelector('#btn-signUp');
-  btnSignUp.addEventListener('click', signUpOnSubmit);
-  return form;
-}
+    // selecccionando elementos del DOM
+    const btnLogIn = formLogin.querySelector('#btn-login');
+    btnLogIn.addEventListener('click', logInOnSubmit);
+    return formLogin;
+  }
+  
