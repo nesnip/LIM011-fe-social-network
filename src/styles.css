@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 form{
     background: rgb(226, 226, 220);
     display: flex;
