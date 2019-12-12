@@ -1,4 +1,4 @@
-import { signIn, logIn } from './controller/controller-firebase.js';
+import { signIn, logIn, googleLogin, facebookLogin} from './controller/controller-firebase.js';
 // eslint-disable-next-line import/prefer-default-export
 const changeHash = (hash) => {
   location.hash = hash;
@@ -13,11 +13,17 @@ export const signInOnSubmit = () => {
     alert(errorMessage);
   });
 };
+export const loginWithGoogle = () => {
+googleLogin().then(() =>  changeHash('/Home'));
+}
+export const loginWithFacebook = () => {
+  facebookLogin().then(() =>  changeHash('/Home'));
+  }
 export const logInOnSubmit = () => {
   const email = document.querySelector('#email-login').value;
   const password = document.querySelector('#password-login').value;
   logIn(email, password)
-  .then(() => changeHash('/home'))
+  .then(() => changeHash('/Home'))
   .catch((error) => {
     const errorMessage = error.message;
     alert(errorMessage);

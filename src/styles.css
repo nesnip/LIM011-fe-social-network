@@ -6,7 +6,7 @@ form{
 }
  .container-form {
     width: 290px;
-    height: 280px;
+    height: 370px;
     align-content: center;
     border-radius: 9px;
     border-style: solid;
@@ -28,6 +28,6 @@ form{
 .btn-form{
     margin-top: 15px;
     width: 250px;
-    height: 40px;   
-    background-color: rgb(255, 53, 94);
+    height: 40px;  
+    
 }
