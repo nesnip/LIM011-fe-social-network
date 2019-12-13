@@ -6,6 +6,7 @@ export default () => {
      <div class = "container-form">
       <form class="formulario">
         <h2>Log in</h2>
+        <img src="imagenes/recorte1-ConvertImage.png" alt="">
           <input type="email" class="txt-form" id="email-login" placeholder = "Ingrese E-mail">
           <input type="password" class="txt-form" id="password-login" placeholder = "Ingrese Contraseña">
         <button class="btn-form" id="btn-login" type="button"> Log in </button>
@@ -27,4 +28,3 @@ export default () => {
   btnLogInFacebook.addEventListener('click', loginWithFacebook);
   return formLogin;
 };
-
