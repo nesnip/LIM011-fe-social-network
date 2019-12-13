@@ -1,4 +1,4 @@
-import { signIn, logIn, googleLogin, facebookLogin} from './controller/controller-firebase.js';
+import { signIn, logIn, googleLogin, facebookLogin,signOut} from './controller/controller-firebase.js';
 // eslint-disable-next-line import/prefer-default-export
 const changeHash = (hash) => {
   location.hash = hash;
@@ -28,4 +28,9 @@ export const logInOnSubmit = () => {
     const errorMessage = error.message;
     alert(errorMessage);
   });
+}
+export const signOutSubmit = () => {
+  signOut().then(() => changeHash('/logIn'))
+  .catch((error) => { console.log(error);
+  })
 }

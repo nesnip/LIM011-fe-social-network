@@ -1,7 +1,7 @@
-import { example } from '../src/example.js';
+import { signIn } from '../controller/controller-firebase.js';
 
 describe('example', () => {
   it('debería ser una función', () => {
-    expect(typeof example).toBe('function');
+    expect(typeof signIn).toBe('function');
   });
 });
