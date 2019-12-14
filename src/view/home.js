@@ -1,13 +1,15 @@
-export default () => {
-    const home = document.createElement('form');
-    const formContent = `
-     
-        <h2>Home</h2>
-      
-    `;
-    
-    home.innerHTML = formContent;
+import { signOut } from '../view-controller.js';
 
-    return home;
-  }
-  
+export default () => {
+  const home = document.createElement('div');
+  const formContent = `
+        <h2>Home</h2>
+        <button id="btn-log-out">Log out</button>
+    `;
+
+  home.innerHTML = formContent;
+
+  const btnLogOut = home.querySelector('#btn-log-out');
+  btnLogOut.addEventListener('click', signOut);
+  return home;
+};
