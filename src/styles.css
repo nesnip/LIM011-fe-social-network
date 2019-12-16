@@ -44,5 +44,12 @@ h2 {
     margin-top: 15px;
     width: 250px;
     height: 40px;  
+}
 
+#btn-login-google, #btn-login-facebook {
+    background: none;
+    border: 0;
+    padding: 0;
+    width: auto;
+    cursor: pointer;
 }

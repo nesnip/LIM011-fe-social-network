@@ -9,8 +9,10 @@ export default () => {
           <input type="email" class="txt-form" id="email-login" placeholder = "Ingrese E-mail">
           <input type="password" class="txt-form" id="password-login" placeholder = "Ingrese Contraseña">
         <button class="btn-form" id="btn-login" type="button"> Log in </button>
-        <a class="btn-form" id="btn-login-google"> <img src="imagenes/busqueda.png" /></a>
-        <a class="btn-form" id="btn-login-facebook"> <img src="imagenes/facebook.png" /></a>
+        <div>
+          <button class="btn-form" id="btn-login-google"> <img src="imagenes/busqueda.png" /></button>
+          <button class="btn-form" id="btn-login-facebook"> <img src="imagenes/facebook.png" /></button>
+        </div>
         <a href="#SignIn"> Register here </a>
       </form>
       </div>
