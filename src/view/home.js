@@ -1,7 +1,8 @@
-import { signOutSubmit} from "../view-controller.js";
+import { signOutSubmit } from '../view-controller.js';
+
 export default () => {
-    const home = document.createElement('div');
-    const divContent = `
+  const home = document.createElement('div');
+  const divContent = `
     
         <nav>
         <ul>
@@ -11,10 +12,9 @@ export default () => {
         </ul>
       </nav>
     `;
-    home.innerHTML = divContent;
+  home.innerHTML = divContent;
 
-    const btnSignOut = home.querySelector('#btn-cerrar');
-    btnSignOut.addEventListener('click',signOutSubmit);
-    return home;
-  }
-  
+  const btnSignOut = home.querySelector('#btn-cerrar');
+  btnSignOut.addEventListener('click', signOutSubmit);
+  return home;
+};

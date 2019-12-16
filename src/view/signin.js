@@ -1,4 +1,4 @@
-import { signInOnSubmit } from "../view-controller.js";
+import { signInOnSubmit } from '../view-controller.js';
 
 export default () => {
   const form = document.createElement('form');
@@ -18,4 +18,4 @@ export default () => {
   const btnSignIn = form.querySelector('#btn-signIn');
   btnSignIn.addEventListener('click', signInOnSubmit);
   return form;
-}
+};

@@ -1,7 +1,8 @@
-import { logInOnSubmit, loginWithGoogle, loginWithFacebook } from "../view-controller.js";
+import { logInOnSubmit, loginWithGoogle, loginWithFacebook } from '../view-controller.js';
+
 export default () => {
-    const formLogin = document.createElement('form');
-    const formContent = `
+  const formLogin = document.createElement('form');
+  const formContent = `
      <div class = "container-form">
       <form class="formulario">
         <h2>Log In</h2>
@@ -14,16 +15,15 @@ export default () => {
       </form>
       </div>
     `;
-    
-    formLogin.innerHTML = formContent;
-  
-    // selecccionando elementos del DOM
-    const btnLogIn = formLogin.querySelector('#btn-login');
-    btnLogIn.addEventListener('click', logInOnSubmit);
-    const btnLogInGoogle = formLogin.querySelector('#btn-login-google');
-    btnLogInGoogle.addEventListener('click', loginWithGoogle);
-    const btnLogInFacebook = formLogin.querySelector('#btn-login-facebook');
-    btnLogInFacebook.addEventListener('click', loginWithFacebook);
-    return formLogin;
-  }
-  
+
+  formLogin.innerHTML = formContent;
+
+  // selecccionando elementos del DOM
+  const btnLogIn = formLogin.querySelector('#btn-login');
+  btnLogIn.addEventListener('click', logInOnSubmit);
+  const btnLogInGoogle = formLogin.querySelector('#btn-login-google');
+  btnLogInGoogle.addEventListener('click', loginWithGoogle);
+  const btnLogInFacebook = formLogin.querySelector('#btn-login-facebook');
+  btnLogInFacebook.addEventListener('click', loginWithFacebook);
+  return formLogin;
+};
