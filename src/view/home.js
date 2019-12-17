@@ -3,13 +3,18 @@ import { signOut } from '../view-controller.js';
 export default () => {
   const home = document.createElement('div');
   const formContent = `
-        <h2>Home</h2>
-        <button id="btn-log-out">Log out</button>
-    `;
+    <nav>
+      <ul>
+        <li><a id="btn-profile">Profile</a></li>
+        <li><a id="btn-home">Home</a></li>
+        <li><a id="btn-cerrar">Sign out</a></li>
+      </ul>
+    </nav>
+  `;
 
   home.innerHTML = formContent;
 
-  const btnLogOut = home.querySelector('#btn-log-out');
+  const btnLogOut = home.querySelector('#btn-cerrar');
   btnLogOut.addEventListener('click', signOut);
   return home;
 };
