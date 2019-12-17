@@ -1,3 +1,7 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable import/extensions */
+/* eslint-disable no-alert */
 import {
   signIn, logIn, googleLogin, facebookLogin,
 } from './controller/controller-firebase.js';

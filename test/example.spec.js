@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
 import { example } from '../src/example.js';
 
 describe('example', () => {

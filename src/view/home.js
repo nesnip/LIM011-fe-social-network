@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { signOut } from '../view-controller.js';
 
 export default () => {

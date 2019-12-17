@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-use-before-define */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable default-case */
 import SignIn from './view/signin.js';

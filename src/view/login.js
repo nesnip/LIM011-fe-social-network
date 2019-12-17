@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { logInOnSubmit, loginWithGoogle, loginWithFacebook } from '../view-controller.js';
 
 export default () => {
