@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import {
-  signIn, logIn, googleLogin, facebookLogin, signOut,
+  signIn, logIn, googleLogin, facebookLogin, signOut, Acceso,
 } from './controller/controller-firebase.js';
 // eslint-disable-next-line import/prefer-default-export
 const changeHash = (hash) => {
@@ -41,4 +42,15 @@ export const signOutSubmit = () => {
       // eslint-disable-next-line no-console
       console.log(error);
     });
+};
+
+export const acceso = () => {
+  const nombreusuario = document.querySelector('#usuario').value;
+  const user = firebase.auth().currentUser;
+  const emailn = user.email;
+  if (user) {
+    console.log('usuario', emailn);
+  } else {
+    console.log('error');
+  }
 };

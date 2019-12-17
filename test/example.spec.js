@@ -1,5 +1,5 @@
 import {
-  signIn, logIn, googleLogin, facebookLogin,
+  logIn, signIn, facebookLogin, googleLogin,
 } from '../src/controller/controller-firebase.js';
 
 const firebasemock = require('firebase-mock');
@@ -16,26 +16,37 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore,
 );
 
-describe('signIn', () => {
-  it('debería registrar un usuario', () => signIn('abc@gmail.com', '123456789').then((user) => {
-    expect(user).toBe('Usuario registrado');
-  }));
-});
-
 describe('logIn', () => {
-  it('debería ser una función', () => {
+  it('debería ser una  funciòn', () => {
     expect(typeof logIn).toBe('function');
   });
 });
 
-describe('googleLogin', () => {
-  it('debería ser una función', () => {
-    expect(typeof googleLogin).toBe('function');
+describe('Iniciar sesiòn', () => {
+  it('Debería poder iniciar sesion', () => logIn('vanesagarro97@gmail.com', '12345678')
+    .then((user) => {
+      expect(user.email).toBe('vanesagarro97@gmail.com');
+    }));
+});
+describe('SignIn', () => {
+  it('debería ser una  funciòn', () => {
+    expect(typeof signIn).toBe('function');
   });
 });
 
-describe('facebookLogin', () => {
-  it('debería ser una función', () => {
+describe('Registrar usuario', () => {
+  it('Debería poder registrar un usuario y contraseña', () => logIn('user@gmail.com', '12345678')
+    .then((user) => {
+      expect(user.email).toBe('user@gmail.com');
+    }));
+});
+describe('FacebookLogin', () => {
+  it('debería ser una  funciòn', () => {
     expect(typeof facebookLogin).toBe('function');
+  });
+});
+describe('GoogleLogin', () => {
+  it('debería ser una  funciòn', () => {
+    expect(typeof googleLogin).toBe('function');
   });
 });
