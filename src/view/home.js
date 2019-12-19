@@ -1,4 +1,4 @@
-import { signOutSubmit, acceso } from '../view-controller.js';
+import { signOutSubmit } from '../view-controller.js';
 
 export default () => {
   const home = document.createElement('div');
@@ -11,10 +11,12 @@ export default () => {
         <li><a id="btn-cerrar">Cerrar sesion</a></li>
         </ul>
       </nav>
-      <a id="btn-user">usuario</a>
       <section>
       <figure>
-    
+       <div id="portada"> </div>
+       <div id="info-usuario"> 
+       <img src="https://image.flaticon.com/icons/png/512/149/149071.png" alt="" id="foto-usuario">
+       </div>
       </figure>
       <main>
        <textarea rows="4" cols="50" placeholder="¿Que quieres compartir?" > </textarea> 
@@ -27,7 +29,5 @@ export default () => {
 
   const btnSignOut = home.querySelector('#btn-cerrar');
   btnSignOut.addEventListener('click', signOutSubmit);
-  const btnuser = home.querySelector('#btn-user');
-  btnuser.addEventListener('click', acceso);
   return home;
 };

@@ -5,7 +5,6 @@ export const signIn = (email, password) => firebase.auth().createUserWithEmailAn
 // const errorCode = error.code;
 // eslint-disable-next-line max-len
 export const logIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
-
 export const googleLogin = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   return firebase.auth().signInWithPopup(provider);
@@ -15,6 +14,3 @@ export const facebookLogin = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 export const signOut = () => firebase.auth().signOut();
-export const Acceso = () => {
-  const user = firebase.auth().currentUser;
-};

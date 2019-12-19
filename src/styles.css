@@ -149,6 +149,7 @@ textarea{
 
 }
 section{
+  margin-top: 8px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -161,6 +162,23 @@ figure{
   height: 250px;
   border: 1px solid #566a81; 
 }
+#portada{
+  border: 2px solid #566a81;   
+  background-color: rgb(121, 198, 218);
+  width: 458px;
+  height: 120px;
+}
+#info-usuario{
+  border: 2px solid #566a81;   
+  background-color: rgb(192, 203, 206);
+  width: 458px;
+  height: 122px;
+}
+#foto-usuario{
+  width: 130px;
+  height: 120px;
+}
+
 main {
   width: 460px;
   height: 250px;
