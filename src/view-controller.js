@@ -47,7 +47,7 @@ export const signOutSubmit = () => {
 export const acceso = () => {
   const nombreusuario = document.querySelector('#usuario').value;
   const user = firebase.auth().currentUser;
-  const emailn = user.email;
+  const emailn = user.email; // muestra el email del usuario logueado
   if (user) {
     console.log('usuario', emailn);
   } else {

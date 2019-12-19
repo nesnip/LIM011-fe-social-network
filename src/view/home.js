@@ -8,11 +8,20 @@ export default () => {
         <ul>
         <li><a id="btn-profile">Profile</a></li>
         <li><a id="btn-home">Home</a></li>
-        <li><a id="btn-cerrar">Sign out</a></li>
+        <li><a id="btn-cerrar">Cerrar sesion</a></li>
         </ul>
       </nav>
       <a id="btn-user">usuario</a>
-      <a id="usuario">mostrar usuario aqui</a>
+      <section>
+      <figure>
+    
+      </figure>
+      <main>
+       <textarea rows="4" cols="50" placeholder="¿Que quieres compartir?" > </textarea> 
+       <button id="btn-subir-img"> imagen </button>
+       <button id="btn-compartir"> Compartir </button>
+       </main>
+       </section>
     `;
   home.innerHTML = divContent;
 
