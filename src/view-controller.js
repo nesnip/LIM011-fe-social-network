@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable no-alert */
 import {
-  signIn, logIn, googleLogin, facebookLogin,
+  signIn, logIn, googleLogin, facebookLogin, signOut,
 } from './controller/controller-firebase.js';
 // eslint-disable-next-line import/prefer-default-export
 const changeHash = (hash) => {
@@ -19,6 +19,15 @@ export const signInOnSubmit = () => {
       alert(errorMessage);
     });
 };
+
+export const accesoLogin = () => {
+  const user = firebase.auth().currentUser;
+
+  if (user != null) {
+    console.log('logueado', user.email);
+  }
+};
+
 export const loginWithGoogle = () => {
   googleLogin().then(() => changeHash('/Home'));
 };
@@ -36,8 +45,8 @@ export const logInOnSubmit = () => {
     });
 };
 
-export const signOut = () => {
-  firebase.auth().signOut().then(() => {
+export const signOutSubmit = () => {
+  signOut().then(() => {
     changeHash('/logIn');
   }).catch((error) => {
     const errorMessage = error.message;

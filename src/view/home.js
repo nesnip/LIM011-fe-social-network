@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import { signOut } from '../view-controller.js';
+import { signOutSubmit } from '../view-controller.js';
 
 export default () => {
   const home = document.createElement('div');
@@ -16,6 +16,6 @@ export default () => {
   home.innerHTML = formContent;
 
   const btnLogOut = home.querySelector('#btn-cerrar');
-  btnLogOut.addEventListener('click', signOut);
+  btnLogOut.addEventListener('click', signOutSubmit);
   return home;
 };
