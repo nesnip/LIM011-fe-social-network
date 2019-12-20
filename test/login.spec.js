@@ -3,8 +3,7 @@
 // iniciando tests
 
 import {
-  signIn,
-  logIn, googleLogin, facebookLogin, signOut,
+  signIn, logIn, googleLogin, facebookLogin, signOut,
 } from '../src/controller/controller-firebase.js';
 
 const firebasemock = require('firebase-mock');
@@ -12,19 +11,20 @@ const firebasemock = require('firebase-mock');
 const mockauth = new firebasemock.MockFirebase();
 const mockfirestore = new firebasemock.MockFirestore();
 
+mockfirestore.autoFlush();
+mockauth.autoFlush();
+global.firebase = firebasemock.MockFirebaseSdk(
+  // use null if your code does not use RTDB
+  () => null,
+  () => mockauth,
+  () => mockfirestore,
+);
 
 describe('login', () => {
+  afterEach(() => {
+    signOut();
+  });
   describe('Registro', () => {
-    afterEach(() => {
-      mockfirestore.autoFlush();
-      mockauth.autoFlush();
-      global.firebase = firebasemock.MockFirebaseSdk(
-        // use null if your code does not use RTDB
-        () => null,
-        () => mockauth,
-        () => mockfirestore,
-      );
-    });
     it('debería ser una función', () => {
       expect(typeof signIn).toBe('function');
     });
@@ -36,46 +36,46 @@ describe('login', () => {
   });
 
   describe('Inicio de sesión', () => {
-    afterEach(() => {
-      mockfirestore.autoFlush();
-      mockauth.autoFlush();
-      global.firebase = firebasemock.MockFirebaseSdk(
-        // use null if your code does not use RTDB
-        () => null,
-        () => mockauth,
-        () => mockfirestore,
-      );
-    });
     it('debería ser una función', () => {
       expect(typeof logIn).toBe('function');
     });
 
     it('Debería poder iniciar sesion', () => logIn('front@end.la', '123456')
       .then((user) => {
+        console.log(user);
         expect(user.email).toBe('front@end.la');
       }));
   });
 
   describe('Inicio de sesión con cuenta de Google', () => {
-    afterEach(() => {
-      mockfirestore.autoFlush();
-      mockauth.autoFlush();
-      global.firebase = firebasemock.MockFirebaseSdk(
-        // use null if your code does not use RTDB
-        () => null,
-        () => mockauth,
-        () => mockfirestore,
-      );
-    });
     it('debería ser una función', () => {
       expect(typeof googleLogin).toBe('function');
     });
 
     it('Debería poder registrarse e iniciar sesión con cuenta Google', (done) => {
-      const user = firebase.auth().currentUser;
+      let user = firebase.auth().currentUser;
       console.log(user);
-      expect(user.isAnonymous).toBe(true);
-      googleLogin().then((user2) => {
+      expect(user).toBe(null);
+      googleLogin().then(() => {
+        user = firebase.auth().currentUser;
+        console.log(firebase.auth().currentUser);
+        expect(user.isAnonymous).toBe(false);
+        done();
+      });
+    });
+  });
+
+  describe('Inicio de sesión con cuenta de Facebook', () => {
+    it('debería ser una función', () => {
+      expect(typeof facebookLogin).toBe('function');
+    });
+
+    it('Debería poder registrarse e iniciar sesión con cuenta Google', (done) => {
+      let user = firebase.auth().currentUser;
+      console.log(user);
+      expect(user).toBe(null);
+      facebookLogin().then(() => {
+        user = firebase.auth().currentUser;
         console.log(firebase.auth().currentUser);
         expect(user.isAnonymous).toBe(false);
         done();

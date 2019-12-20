@@ -11,6 +11,7 @@ export default () => {
         <li><a id="btn-cerrar">Sign out</a></li>
       </ul>
     </nav>
+    <p id="email-user"></p>
   `;
 
   home.innerHTML = formContent;
