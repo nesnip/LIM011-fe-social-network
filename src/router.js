@@ -20,16 +20,20 @@ const viewTmp = (routers) => {
       break;
   }
 };
-
 const changeTmp = (hash) => {
+  const user = firebase.auth().currentUser;
+  console.log(user);
   if (hash === '#/' || hash === '' || hash === '#') {
     return viewTmp('#/LogIn');
-  } if (hash === '#SignIn') {
+  } if (hash === '#/SignIn') {
     return viewTmp('#/SignIn');
   } if (hash === '#/Home') {
-    return viewTmp('#/Home');
-  }
-  if (hash === '#/LogIn' || hash === '#/SignIn' || hash === '#/Home') {
+    if (user !== null) {
+      return viewTmp('#/Home');
+    }
+    window.location.hash = '#/LogIn';
+    return viewTmp('#/LogIn');
+  } if (hash === '#/LogIn' || hash === '#/SignIn' || hash === '#/Home') {
     return viewTmp(hash);
   }
   return viewTmp('#/LogIn');

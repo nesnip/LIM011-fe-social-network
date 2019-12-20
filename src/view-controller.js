@@ -20,7 +20,8 @@ export const signInOnSubmit = () => {
     });
 };
 export const loginWithGoogle = () => {
-  googleLogin().then(() => changeHash('/Home'));
+  const userId = firebase.auth().currentUser;
+  googleLogin().then(() => changeHash('/Home'), console.log(userId));
 };
 export const loginWithFacebook = () => {
   facebookLogin().then(() => changeHash('/Home'));

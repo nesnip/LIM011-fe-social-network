@@ -15,7 +15,7 @@ export default () => {
       <button type="button" class="btn-form-icon" id="btn-login-facebook"><img src="imagenes/facebook.svg" /></button>
     </div>
     <p>¿No tienes cuenta?</p>
-    <a href="#SignIn"> Registrate aquì </a>
+    <a href="#/SignIn"> Registrate aquì </a>
   </form>
 </div>
 `;
