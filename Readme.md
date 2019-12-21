@@ -147,27 +147,27 @@ anterior en la siguiente sección.
 
 ### HTML y CSS
 
-* [ ] [HTML semántico](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
-* [ ] [CSS `flexbox`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* [ ] Construir tu aplicación respetando el diseño realizado (maquetación).
+* [X] [HTML semántico](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantics_in_HTML)
+* [X] [CSS `flexbox`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [X] Construir tu aplicación respetando el diseño realizado (maquetación).
 
 ### DOM y Web APIs
 
 * [ ] [Manipulación dinámica del DOM](https://developer.mozilla.org/es/docs/Referencia_DOM_de_Gecko/Introducci%C3%B3n)
-* [ ] [History API](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
+* [X] [History API](https://developer.mozilla.org/es/docs/DOM/Manipulando_el_historial_del_navegador)
 * [ ] [`localStorage`]
 
 ### Javascript
 
 * [ ] [Uso de callbacks](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
 * [ ] [Consumo de Promesas](https://scotch.io/tutorials/javascript-promises-for-dummies#toc-consuming-promises)
-* [ ] Uso ES modules
+* [X] Uso ES modules
 ([`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 | [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export))
 
 ### Firebase
 
-* [ ] [Firestore](https://firebase.google.com/docs/firestore)
+* [X] [Firestore](https://firebase.google.com/docs/firestore)
 * [ ] [Firebase Auth](https://firebase.google.com/docs/auth/web/start)
 * [ ] [Firebase security rules](https://firebase.google.com/docs/rules)
 * [ ] [Uso de onSnapshot](https://firebase.google.com/docs/firestore/query-data/listen)
@@ -175,28 +175,28 @@ anterior en la siguiente sección.
 
 ### Testing
 
-* [ ] [Testeo de tus funciones](https://jestjs.io/docs/es-ES/getting-started)
+* [X] [Testeo de tus funciones](https://jestjs.io/docs/es-ES/getting-started)
 * [ ] [Testeo asíncrono](https://jestjs.io/docs/es-ES/asynchronous)
 * [ ] [Mocking](https://jestjs.io/docs/es-ES/manual-mocks)
 
 ### Colaboración en Github
 
-* [ ] Branches
-* [ ] Pull Requests
+* [X] Branches
+* [X] Pull Requests
 * [ ] Tags
 
 ### Organización en Github
 
-* [ ] Projects
-* [ ] Issues
-* [ ] Labels
-* [ ] Milestones
+* [X] Projects
+* [X] Issues
+* [X] Labels
+* [X] Milestones
 
 ### Buenas prácticas de desarrollo
 
-* [ ] Modularización
-* [ ] Nomenclatura / Semántica
-* [ ] Linting
+* [X] Modularización
+* [X] Nomenclatura / Semántica
+* [X] Linting
 
 ***
 

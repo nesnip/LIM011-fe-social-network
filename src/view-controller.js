@@ -13,7 +13,7 @@ export const signInOnSubmit = () => {
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
   signIn(email, password)
-    .then(() => alert('Datos Guardados'), changeHash('/logIn'))
+    .then(() => alert('Datos Guardados'), changeHash('/LogIn'))
     .catch((error) => {
       const errorMessage = error.message;
       alert(errorMessage);
@@ -47,7 +47,7 @@ export const logInOnSubmit = () => {
 
 export const signOutSubmit = () => {
   signOut().then(() => {
-    changeHash('/logIn');
+    changeHash('/LogIn');
   }).catch((error) => {
     const errorMessage = error.message;
     alert(errorMessage);
