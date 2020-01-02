@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-undef */
 export const signIn = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
-// const errorCode = error.code;
 export const logIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
 
 export const googleLogin = () => {
@@ -14,3 +13,20 @@ export const facebookLogin = () => {
 };
 
 export const signOut = () => firebase.auth().signOut();
+
+export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({
+  title: textNewNote,
+});
+
+export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();
+
+export const getNotes = (callback) => firebase.firestore().collection('notes')
+  .onSnapshot((querySnapshot) => {
+    const dato = [];
+    querySnapshot.forEach((doc) => {
+      dato.push({ id: doc.id, ...doc.data() });
+      console.log(doc.data());
+    });
+    console.log(dato);
+    callback(dato);
+  });

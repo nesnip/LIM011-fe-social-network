@@ -1,7 +1,28 @@
 /* eslint-disable import/extensions */
-import { signOutSubmit } from '../view-controller.js';
+import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick } from '../view-controller.js';
 
-export default () => {
+const itemNote = (objNote) => {
+  const divElement = document.createElement('div');
+  const user = firebase.auth().currentUser;
+  divElement.innerHTML = `
+    <div class="container-post">
+      <div class="post-avatar">
+        <p><img src="${user.photoURL}" class="foto-usuario"></p>
+        <p>${user.displayName}</p>
+      </div>
+        <p>${objNote.title}</p>
+        <button id="btn-deleted-${objNote.id}">
+          <i>delete</i>
+        </button>
+    </div>
+  `;
+  // agregando evento de click al btn eliminar una nota
+  divElement.querySelector(`#btn-deleted-${objNote.id}`)
+    .addEventListener('click', () => deleteNoteOnClick(objNote));
+  return divElement;
+};
+
+export default (notes) => {
   const home = document.createElement('div');
   const formContent = `
     <nav>
@@ -11,12 +32,36 @@ export default () => {
         <li><a id="btn-cerrar">Sign out</a></li>
       </ul>
     </nav>
-    <p id="email-user"></p>
+    <!-- form add note -->
+    <section>
+      <figure>
+        <div class="portada"> </div>
+        <div class="info-usuario"> 
+        <img src="https://image.flaticon.com/icons/svg/145/145852.svg" alt="" class="foto-usuario">
+        </div>
+      </figure>
+      <main>
+        <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
+        <button id="btn-subir-img"> imagen </button>
+        <button type="button" id="btn-add-note">Publicar</button>
+      </main>
+    </section>
+    <!-- notes -->
+    <section>
+      <div id="notes-list">
+      </div>
+    </section>
   `;
 
   home.innerHTML = formContent;
 
   const btnLogOut = home.querySelector('#btn-cerrar');
   btnLogOut.addEventListener('click', signOutSubmit);
+  const buttonAddNote = home.querySelector('#btn-add-note');
+  const div = home.querySelector('#notes-list');
+  notes.forEach((note) => {
+    div.appendChild(itemNote(note));
+  });
+  buttonAddNote.addEventListener('click', addNoteOnSubmit);
   return home;
 };

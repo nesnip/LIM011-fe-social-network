@@ -1,19 +1,19 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/extensions */
-/* eslint-disable no-alert */
 import {
-  signIn, logIn, googleLogin, facebookLogin, signOut,
+  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote,
 } from './controller/controller-firebase.js';
-// eslint-disable-next-line import/prefer-default-export
+
 const changeHash = (hash) => {
   location.hash = hash;
 };
+
 export const signInOnSubmit = () => {
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
   signIn(email, password)
-    .then(() => alert('Datos Guardados'), changeHash('/LogIn'))
+    .then(() => alert('Datos Guardados'), changeHash('/logIn'))
     .catch((error) => {
       const errorMessage = error.message;
       alert(errorMessage);
@@ -22,7 +22,6 @@ export const signInOnSubmit = () => {
 
 export const accesoLogin = () => {
   const user = firebase.auth().currentUser;
-
   if (user != null) {
     console.log('logueado', user.email);
   }
@@ -31,9 +30,11 @@ export const accesoLogin = () => {
 export const loginWithGoogle = () => {
   googleLogin().then(() => changeHash('/Home'));
 };
+
 export const loginWithFacebook = () => {
   facebookLogin().then(() => changeHash('/Home'));
 };
+
 export const logInOnSubmit = () => {
   const email = document.querySelector('#email-login').value;
   const password = document.querySelector('#password-login').value;
@@ -47,9 +48,28 @@ export const logInOnSubmit = () => {
 
 export const signOutSubmit = () => {
   signOut().then(() => {
-    changeHash('/LogIn');
+    changeHash('/logIn');
+    alert('Cerrando sesión');
   }).catch((error) => {
     const errorMessage = error.message;
     alert(errorMessage);
   });
 };
+
+export const addNoteOnSubmit = (event) => {
+  event.preventDefault();
+  const input = document.getElementById('input-new-note');
+
+  addNote(input.value)
+    .then((docRef) => {
+      input.value = '';
+      console.log('Document written with ID: ', docRef.id);
+      //  data.message = 'Nota agregada';
+    }).catch((error) => {
+      input.value = '';
+      console.error('Error adding document: ', error);
+      //  data.message = 'Lo sentimos, no se pudo agregar la nota';
+    });
+};
+
+export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);

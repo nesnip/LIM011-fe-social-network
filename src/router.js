@@ -2,6 +2,7 @@
 import SignIn from './view/signin.js';
 import LogIn from './view/login.js';
 import Home from './view/home.js';
+import { getNotes } from './controller/controller-firebase.js';
 
 const viewTmp = (routers) => {
   const router = routers.substr(2, routers.length - 2);
@@ -15,7 +16,10 @@ const viewTmp = (routers) => {
       root.appendChild(SignIn());
       break;
     case 'Home':
-      root.appendChild(Home());
+      getNotes((notes) => {
+        root.innerHTML = '';
+        root.appendChild(Home(notes));
+      });
       break;
   }
 };
@@ -24,10 +28,14 @@ const changeTmp = (hash) => {
   const user = firebase.auth().currentUser;
   if (hash === '#/' || hash === '' || hash === '#') {
     return viewTmp('#/LogIn');
-  } if (hash === '#/SignIn') {
+  } if (hash === '#SignIn') {
     return viewTmp('#/SignIn');
   } if (hash === '#/Home' && user !== null) {
+    console.log(user.displayName);
+    console.log(`logueado ${user.email}`);
     return viewTmp('#/Home');
+  } if (hash === '#/LogIn' || hash === '#/SignIn' || hash === '#/Home') {
+    return viewTmp(hash);
   }
   window.location.hash = '#/LogIn';
   return viewTmp('#/LogIn');
