@@ -28,11 +28,7 @@ const changeTmp = (hash) => {
   } if (hash === '#/SignIn') {
     return viewTmp('#/SignIn');
   } if (hash === '#/Home') {
-    if (user !== null) {
-      return viewTmp('#/Home');
-    }
-    window.location.hash = '#/LogIn';
-    return viewTmp('#/LogIn');
+    return viewTmp('#/Home');
   } if (hash === '#/LogIn' || hash === '#/SignIn' || hash === '#/Home') {
     return viewTmp(hash);
   }
@@ -43,3 +39,10 @@ export const initRouter = () => {
   window.addEventListener('load', changeTmp(window.location.hash));
   if (('onhashchange' in window)) window.onhashchange = () => changeTmp(window.location.hash);
 };
+
+/* if (hash === '#/Home') {
+    if (user !== null) {
+   return viewTmp('#/Home');
+    } else{
+      window.location.hash = '#/LogIn';
+    } */ 

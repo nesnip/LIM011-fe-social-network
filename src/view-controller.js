@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import {
-  signIn, logIn, googleLogin, facebookLogin, signOut,
+  addPost, signIn, logIn, googleLogin, facebookLogin, signOut,
 } from './controller/controller-firebase.js';
 // eslint-disable-next-line import/prefer-default-export
 const changeHash = (hash) => {
@@ -20,8 +20,7 @@ export const signInOnSubmit = () => {
     });
 };
 export const loginWithGoogle = () => {
-  const userId = firebase.auth().currentUser;
-  googleLogin().then(() => changeHash('/Home'), console.log(userId));
+  googleLogin().then(() => changeHash('/Home'));
 };
 export const loginWithFacebook = () => {
   facebookLogin().then(() => changeHash('/Home'));
@@ -44,3 +43,16 @@ export const signOutSubmit = () => {
       console.log(error);
     });
 };
+export const addPostOnSubmit = (event) => {
+  event.preventDefault();
+  const inputPost = document.getElementById('input-post');
+  addPost(inputPost.value)
+    .then(() => {
+      inputPost.value = '';
+      console.log("nota agregada")
+    }).catch(() => {
+      inputPost.value = '';
+      console.log("no se puedo agregar la nota")
+    });
+   
+}
