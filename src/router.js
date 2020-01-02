@@ -45,4 +45,4 @@ export const initRouter = () => {
    return viewTmp('#/Home');
     } else{
       window.location.hash = '#/LogIn';
-    } */ 
+    } */

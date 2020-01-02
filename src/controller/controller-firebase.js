@@ -14,7 +14,7 @@ export const facebookLogin = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 export const signOut = () => firebase.auth().signOut();
-export const addPost = (textPost) =>
-firebase.firestore().collection('posts').add({
+export const addPost = (textPost) => firebase.firestore().collection('posts').add({
   title: textPost,
-})
+});
+export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();

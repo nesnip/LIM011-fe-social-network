@@ -1,13 +1,12 @@
 import { signOutSubmit, addPostOnSubmit } from '../view-controller.js';
 
 export default () => {
-  let postContainer = document.getElementById("posts");
-  let userId = firebase.auth().currentUser;
+  const postContainer = document.getElementById('posts');
+  const userId = firebase.auth().currentUser;
   firebase.firestore().collection('posts').onSnapshot((querySnapshot) => {
     postContainer.innerHTML = '';
     querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data().title}`);
-   
       postContainer.innerHTML += `
       <div class = "container-post">
       <div class = "post-avatar"
@@ -16,10 +15,9 @@ export default () => {
       </div>
       <p> ${doc.data().title} </p>
       </div>
-      `
-}
-)}
-);
+      `;
+    });
+  });
   const home = document.createElement('div');
   const divContent = `
     
