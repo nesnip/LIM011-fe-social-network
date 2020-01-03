@@ -59,19 +59,20 @@ export const signOutSubmit = () => {
 export const addNoteOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-note');
-  if  (input.value === '') {
+  if (input.value === '') {
     alert('Campos vacíos');
   } else {
-  addNote(input.value)
-    .then((docRef) => {
-      input.value = '';
-      console.log('Document written with ID: ', docRef.id);
+    addNote(input.value)
+      .then((docRef) => {
+        input.value = '';
+        console.log('Document written with ID: ', docRef.id);
       //  data.message = 'Nota agregada';
-    }).catch((error) => {
-      input.value = '';
-      console.error('Error adding document: ', error);
+      }).catch((error) => {
+        input.value = '';
+        console.error('Error adding document: ', error);
       //  data.message = 'Lo sentimos, no se pudo agregar la nota';
-    });
-}};
+      });
+  }
+};
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
