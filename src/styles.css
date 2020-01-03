@@ -1,4 +1,6 @@
-
+* {
+    font-family: Roboto;
+}
 body {
   margin: 0;
   background-image: url(./imagenes/fondo-fitness.jpg);
