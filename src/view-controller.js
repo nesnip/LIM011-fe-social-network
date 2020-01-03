@@ -6,13 +6,14 @@ import {
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
+  // eslint-disable-next-line no-restricted-globals
   location.hash = hash;
 };
-
 export const signInOnSubmit = () => {
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
   signIn(email, password)
+    // eslint-disable-next-line no-alert
     .then(() => alert('Datos Guardados'), changeHash('/logIn'))
     .catch((error) => {
       const errorMessage = error.message;
@@ -55,11 +56,12 @@ export const signOutSubmit = () => {
     alert(errorMessage);
   });
 };
-
 export const addNoteOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-note');
-
+  if  (input.value === '') {
+    alert('Campos vacíos');
+  } else {
   addNote(input.value)
     .then((docRef) => {
       input.value = '';
@@ -70,6 +72,6 @@ export const addNoteOnSubmit = (event) => {
       console.error('Error adding document: ', error);
       //  data.message = 'Lo sentimos, no se pudo agregar la nota';
     });
-};
+}};
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
