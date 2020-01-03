@@ -4,17 +4,18 @@ import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick } from '../view-contr
 
 const itemNote = (objNote) => {
   const divElement = document.createElement('div');
-  const user = firebase.auth().currentUser;
   divElement.innerHTML = `
     <div class="container-post">
-      <div class="post-avatar">
-        <p><img src="${user.photoURL}" class="foto-usuario"></p>
-        <p id ="nombre-usuario">${user.displayName}</p>
+    <div class="btn-post">
+    <span id="btn-deleted-${objNote.id}"><img src="imagenes/delete.png" /></span>
+    </div>
+      <div class="photo-avatar">
+        <p><img src="${objNote.avatar}" class="avatar-usuario"></p>
+        <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
       </div>
+      <section class="texto-post">
         <p>${objNote.title}</p>
-        <button id="btn-deleted-${objNote.id}">
-          <i>delete</i>
-        </button>
+        </section>
     </div>
   `;
   // agregando evento de click al btn eliminar una nota
@@ -24,8 +25,8 @@ const itemNote = (objNote) => {
 };
 
 export default (notes) => {
-  const user = firebase.auth().currentUser;
   const home = document.createElement('div');
+  const user = firebase.auth().currentUser;
   const formContent = `
     <nav>
       <ul>
@@ -37,16 +38,20 @@ export default (notes) => {
     <!-- form add note -->
     <section>
       <figure>
-        <div class="portada"> </div>
+        <div class="portada">
+        
+        </div>
         <div class="info-usuario"> 
         <p><img src="${user.photoURL}" class="foto-usuario"></p>
-        <p id ="nombre-usuario">${user.displayName}</p>
+        <h3 id ="nombre-usuario">${user.displayName}</h3>
         </div>
       </figure>
       <main>
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
+        <section id="botones-post">
         <button id="btn-subir-img"> imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
+        </section>
       </main>
     </section>
     <!-- notes -->

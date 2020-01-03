@@ -15,6 +15,8 @@ export const signOut = () => firebase.auth().signOut();
 
 export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({
   title: textNewNote,
+  usuario : firebase.auth().currentUser.displayName,
+  avatar: firebase.auth().currentUser.photoURL,
 });
 
 export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();

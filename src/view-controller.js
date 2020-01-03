@@ -59,6 +59,9 @@ export const signOutSubmit = () => {
 export const addNoteOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-note');
+  if  (input.value === '') {
+    alert('Campos vacíos');
+  } else {
   addNote(input.value)
     .then((docRef) => {
       input.value = '';
@@ -69,6 +72,6 @@ export const addNoteOnSubmit = (event) => {
       console.error('Error adding document: ', error);
       //  data.message = 'Lo sentimos, no se pudo agregar la nota';
     });
-};
+}};
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
