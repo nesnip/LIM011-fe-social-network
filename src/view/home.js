@@ -7,8 +7,7 @@ const itemNote = (objNote) => {
   divElement.innerHTML = `
     <div class="container-post">
       <div class="post-avatar">
-        <p><img src="${user.photoURL}" class="foto-usuario"></p>
-        <p>${user.displayName}</p>
+        <p>Publicado por: ${objNote.usuario}</p>
       </div>
         <p>${objNote.title}</p>
         <button id="btn-deleted-${objNote.id}">
@@ -24,6 +23,8 @@ const itemNote = (objNote) => {
 
 export default (notes) => {
   const home = document.createElement('div');
+  const user = firebase.auth().currentUser;
+
   const formContent = `
     <nav>
       <ul>
@@ -37,7 +38,7 @@ export default (notes) => {
       <figure>
         <div class="portada"> </div>
         <div class="info-usuario"> 
-        <img src="https://image.flaticon.com/icons/svg/145/145852.svg" alt="" class="foto-usuario">
+        <img src="${user.photoURL}" alt="" class="foto-usuario"> <p id="user-name">${user.displayName}</p>
         </div>
       </figure>
       <main>
