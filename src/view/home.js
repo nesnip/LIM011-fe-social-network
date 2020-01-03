@@ -11,7 +11,8 @@ const itemNote = (objNote) => {
     <span id="btn-deleted-${objNote.id}">${user.uid === objNote.uid ? '<img id="trash" src="imagenes/delete.png" />' : ''}</span>
     </div>
       <div class="photo-avatar">
-        <p><img src="${objNote.avatar}" class="avatar-usuario"></p>
+      
+        <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
       </div>
       <section class="texto-post">
