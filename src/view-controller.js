@@ -1,8 +1,10 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable import/extensions */
 import {
-  addPost, signIn, logIn, googleLogin, facebookLogin, signOut,
+  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote,
 } from './controller/controller-firebase.js';
-// eslint-disable-next-line import/prefer-default-export
+
 const changeHash = (hash) => {
   // eslint-disable-next-line no-restricted-globals
   location.hash = hash;
@@ -15,16 +17,25 @@ export const signInOnSubmit = () => {
     .then(() => alert('Datos Guardados'), changeHash('/logIn'))
     .catch((error) => {
       const errorMessage = error.message;
-      // eslint-disable-next-line no-alert
       alert(errorMessage);
     });
 };
+
+export const accesoLogin = () => {
+  const user = firebase.auth().currentUser;
+  if (user != null) {
+    console.log('logueado', user.email);
+  }
+};
+
 export const loginWithGoogle = () => {
   googleLogin().then(() => changeHash('/Home'));
 };
+
 export const loginWithFacebook = () => {
   facebookLogin().then(() => changeHash('/Home'));
 };
+
 export const logInOnSubmit = () => {
   const email = document.querySelector('#email-login').value;
   const password = document.querySelector('#password-login').value;
@@ -32,27 +43,32 @@ export const logInOnSubmit = () => {
     .then(() => changeHash('/Home'))
     .catch((error) => {
       const errorMessage = error.message;
-      // eslint-disable-next-line no-alert
       alert(errorMessage);
     });
 };
+
 export const signOutSubmit = () => {
-  signOut().then(() => changeHash('/logIn'))
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
+  signOut().then(() => {
+    changeHash('/logIn');
+    alert('Cerrando sesión');
+  }).catch((error) => {
+    const errorMessage = error.message;
+    alert(errorMessage);
+  });
+};
+export const addNoteOnSubmit = (event) => {
+  event.preventDefault();
+  const input = document.getElementById('input-new-note');
+  addNote(input.value)
+    .then((docRef) => {
+      input.value = '';
+      console.log('Document written with ID: ', docRef.id);
+      //  data.message = 'Nota agregada';
+    }).catch((error) => {
+      input.value = '';
+      console.error('Error adding document: ', error);
+      //  data.message = 'Lo sentimos, no se pudo agregar la nota';
     });
 };
-export const addPostOnSubmit = (event) => {
-  event.preventDefault();
-  const inputPost = document.getElementById('input-post');
-  addPost(inputPost.value)
-    .then(() => {
-      inputPost.value = '';
-      console.log("nota agregada")
-    }).catch(() => {
-      inputPost.value = '';
-      console.log("no se puedo agregar la nota")
-    });
-   
-}
+
+export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);

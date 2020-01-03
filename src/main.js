@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
+// eslint-disable-next-line import/named
 import { initRouter } from './router.js';
 
 const init = () => {

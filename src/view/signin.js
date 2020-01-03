@@ -1,3 +1,4 @@
+
 import { signInOnSubmit } from '../view-controller.js';
 
 export default () => {
