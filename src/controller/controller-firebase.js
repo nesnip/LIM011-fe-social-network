@@ -15,7 +15,7 @@ export const facebookLogin = () => {
 export const signOut = () => firebase.auth().signOut();
 
 
-export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({ 
+export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({
   title: textNewNote,
   usuario: firebase.auth().currentUser.displayName,
 });

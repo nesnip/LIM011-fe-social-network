@@ -1,5 +1,5 @@
 * {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
 }
 body {
     margin: 0;
@@ -179,9 +179,9 @@ body {
     align-items: center;  
 }
 
-    #user-name{
+ /*    #user-name{
         
-    }
+    } */
 
   .foto-usuario{
     width: 110px;

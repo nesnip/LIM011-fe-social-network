@@ -3,7 +3,7 @@ import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick } from '../view-contr
 
 const itemNote = (objNote) => {
   const divElement = document.createElement('div');
-  const user = firebase.auth().currentUser;
+  // const user = firebase.auth().currentUser;
   divElement.innerHTML = `
     <div class="container-post">
       <div class="post-avatar">
