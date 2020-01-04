@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/extensions */
 import {
-  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote,
+  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote, saveUsers,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -29,7 +29,10 @@ export const accesoLogin = () => {
 };
 
 export const loginWithGoogle = () => {
-  googleLogin().then(() => changeHash('/Home'));
+  googleLogin().then(() => {
+    changeHash('/Home');
+    saveUsers();
+  });
 };
 
 export const loginWithFacebook = () => {

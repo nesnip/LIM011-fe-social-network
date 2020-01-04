@@ -14,6 +14,7 @@ const itemNote = (objNote) => {
       
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
+        <p id ="nombre-usuario">Publicado el día ${objNote.date}</p>
       </div>
       <section class="texto-post">
         <p>${objNote.title}</p>
