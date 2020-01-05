@@ -6,10 +6,12 @@ export default () => {
   const formContent = `
    <div class = "container-form">
     <form class="formulario">
-      <h2>Sign up</h2>
+      <h2>Regístrate</h2>
         <input type="email" class="txt-form" id="email" placeholder = "Ingrese E-mail">
         <input type="password" class="txt-form" id="password" placeholder = "Ingrese Contraseña">
-      <button class="btn-form" id="btn-signIn" type="button"> Submit </button>
+      <button class="btn-form" id="btn-signIn" type="button"> Enviar </button>
+      <p>¿Ya tienes cuenta?</p>
+      <a href="#/LogIn"> Inicia sesión aquí </a>
     </form>
     </div>
   `;
