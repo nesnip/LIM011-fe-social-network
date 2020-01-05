@@ -3,15 +3,18 @@
 import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick } from '../view-controller.js';
 
 const itemNote = (objNote) => {
+  const user = firebase.auth().currentUser;
   const divElement = document.createElement('div');
   divElement.innerHTML = `
     <div class="container-post">
     <div class="btn-post">
-    <span id="btn-deleted-${objNote.id}"><img src="imagenes/delete.png" /></span>
+    <span id="btn-deleted-${objNote.id}">${user.uid === objNote.uid ? '<img id="trash" src="imagenes/delete.png" />' : ''}</span>
     </div>
       <div class="photo-avatar">
-        <p><img src="${objNote.avatar}" class="avatar-usuario"></p>
+      
+        <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
+        <p id ="nombre-usuario">Publicado el día ${objNote.date}</p>
       </div>
       <section class="texto-post">
         <p>${objNote.title}</p>
@@ -30,9 +33,9 @@ export default (notes) => {
   const formContent = `
     <nav>
       <ul>
-        <li><a id="btn-profile">Profile</a></li>
-        <li><a id="btn-home">Home</a></li>
-        <li><a id="btn-cerrar">Sign out</a></li>
+        <li><a id="btn-profile">Perfil</a></li>
+        <li><a id="btn-home">Inicio</a></li>
+        <li><a id="btn-cerrar">Cerrar sesión</a></li>
       </ul>
     </nav>
     <!-- form add note -->

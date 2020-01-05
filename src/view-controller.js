@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/extensions */
 import {
-  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote,
+  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote, saveUsers,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -29,7 +29,10 @@ export const accesoLogin = () => {
 };
 
 export const loginWithGoogle = () => {
-  googleLogin().then(() => changeHash('/Home'));
+  googleLogin().then(() => {
+    changeHash('/Home');
+    saveUsers();
+  });
 };
 
 export const loginWithFacebook = () => {
@@ -59,19 +62,20 @@ export const signOutSubmit = () => {
 export const addNoteOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-note');
-  if  (input.value === '') {
+  if (input.value === '') {
     alert('Campos vacíos');
   } else {
-  addNote(input.value)
-    .then((docRef) => {
-      input.value = '';
-      console.log('Document written with ID: ', docRef.id);
+    addNote(input.value)
+      .then((docRef) => {
+        input.value = '';
+        console.log('Document written with ID: ', docRef.id);
       //  data.message = 'Nota agregada';
-    }).catch((error) => {
-      input.value = '';
-      console.error('Error adding document: ', error);
+      }).catch((error) => {
+        input.value = '';
+        console.error('Error adding document: ', error);
       //  data.message = 'Lo sentimos, no se pudo agregar la nota';
-    });
-}};
+      });
+  }
+};
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
