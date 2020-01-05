@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions */
+
 import { signInOnSubmit } from '../view-controller.js';
 
 export default () => {
