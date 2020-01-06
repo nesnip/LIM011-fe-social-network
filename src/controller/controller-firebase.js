@@ -23,19 +23,16 @@ export const facebookLogin = () => {
 };
 
 export const signOut = () => firebase.auth().signOut();
-
-
 export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({
   title: textNewNote,
   usuario: firebase.auth().currentUser.displayName,
   avatar: firebase.auth().currentUser.photoURL,
   uid: firebase.auth().currentUser.uid,
   date: firebase.firestore.FieldValue.serverTimestamp(),
+  love: 0,
 });
-
 export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();
-
-export const getNotes = (callback) => firebase.firestore().collection('notes')
+export const getNotes = (callback) => firebase.firestore().collection('notes').orderBy('date', 'desc') 
   .onSnapshot((querySnapshot) => {
     const dato = [];
     querySnapshot.forEach((doc) => {
@@ -45,3 +42,10 @@ export const getNotes = (callback) => firebase.firestore().collection('notes')
     console.log(dato);
     callback(dato);
   });
+  export const countLove = (idNote, reactionLove) => {  
+    let reactionClick = firebase.firestore().collection('notes').doc(idNote);
+    return reactionClick.update({
+      love: reactionLove += 1
+    });
+  };
+  

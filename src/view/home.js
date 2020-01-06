@@ -1,6 +1,6 @@
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
-import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick } from '../view-controller.js';
+import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick ,reactionLoveOnClick} from '../view-controller.js';
 
 const itemNote = (objNote) => {
   const user = firebase.auth().currentUser;
@@ -11,16 +11,21 @@ const itemNote = (objNote) => {
     <span id="btn-deleted-${objNote.id}">${user.uid === objNote.uid ? '<img id="trash" src="imagenes/delete.png" />' : ''}</span>
     </div>
       <div class="photo-avatar">
-      
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
+        <div class="date">
         <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
-        <p id ="nombre-usuario">Publicado el día ${objNote.date}</p>
+        <p id ="date-post">${objNote.date.toDate()}</p>
       </div>
+        </div>
       <section class="texto-post">
         <p>${objNote.title}</p>
         </section>
+        <div class = "reactions">
+        <p id ="reaction-love">${objNote.love} </p> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
+        </div>
     </div>
   `;
+
   // agregando evento de click al btn eliminar una nota
   divElement.querySelector(`#btn-deleted-${objNote.id}`)
     .addEventListener('click', () => deleteNoteOnClick(objNote));

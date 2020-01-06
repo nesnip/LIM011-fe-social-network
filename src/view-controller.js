@@ -2,7 +2,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable import/extensions */
 import {
-  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote, saveUsers,
+  signIn, logIn, googleLogin, facebookLogin, signOut, addNote, deleteNote, saveUsers, countLove,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -20,14 +20,6 @@ export const signInOnSubmit = () => {
       alert(errorMessage);
     });
 };
-
-export const accesoLogin = () => {
-  const user = firebase.auth().currentUser;
-  if (user != null) {
-    console.log('logueado', user.email);
-  }
-};
-
 export const loginWithGoogle = () => {
   googleLogin().then(() => {
     changeHash('/Home');
@@ -79,3 +71,7 @@ export const addNoteOnSubmit = (event) => {
 };
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
+export const reactionLoveOnClick = (objNote) => {
+  let numbersOfLove = document.querySelector('#reaction-love');
+  numbersOfLove.innerHTML = countLove(objNote.id, objNote.love);
+};
