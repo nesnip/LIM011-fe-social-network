@@ -30,20 +30,20 @@ export const addNote = (textNewNote) => firebase.firestore().collection('notes')
   usuario: firebase.auth().currentUser.displayName,
   avatar: firebase.auth().currentUser.photoURL,
   uid: firebase.auth().currentUser.uid,
-  date: firebase.firestore.FieldValue.serverTimestamp(),
+  date: firebase.firestore.Timestamp.fromDate(new Date()),
 });
 
-export const editNote = (textNewNote, idNote) => firebase.firestore().collection('notes').doc(idNote.id).set({
-  title: textNewNote,
+export const editNote = (textEditNote, objNote) => firebase.firestore().collection('notes').doc(objNote.id).set({
+  title: textEditNote,
   usuario: firebase.auth().currentUser.displayName,
   avatar: firebase.auth().currentUser.photoURL,
   uid: firebase.auth().currentUser.uid,
-  date: firebase.firestore.FieldValue.serverTimestamp(),
+  date: objNote.date,
 });
 
 export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();
 
-export const getNotes = (callback) => firebase.firestore().collection('notes')
+export const getNotes = (callback) => firebase.firestore().collection('notes').orderBy('date', 'desc')
   .onSnapshot((querySnapshot) => {
     const dato = [];
     querySnapshot.forEach((doc) => {

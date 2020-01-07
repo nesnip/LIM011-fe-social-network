@@ -208,8 +208,9 @@ div > h3[id="nombre-usuario"] {
 #nombre-usuario {
   text-align: center;
   justify-content: center;
-  margin: 0px;
+  margin: 50px;
   margin-right: 0px;
+  margin-left: 0px;
 }
 
 .foto-usuario{
@@ -274,8 +275,13 @@ main {
 .btn-post{
   text-align: end;
 }
+
+.date {
+  text-align: center;
+}
+
 .container-post{
-  width: 440px;
+  width: 520px;
   height: 350px;
   border-radius: 9px;
   border: 1px solid #d3dce6;
@@ -300,15 +306,18 @@ main {
 @media only screen and (min-width: 768px) {
   section {
     align-items: center;
-    justify-content: space-around;
     margin: 0px;
   }
 
   figure {
     width: 380px;
     height: 250px;
-    box-shadow: 5px 5px 10px #aaaaaa;
+    /* box-shadow: 5px 5px 10px #aaaaaa; */
     border-radius: 9px 0px;
-    margin: 0px;
+    margin: 0 5%;
+  }
+
+  main {
+
   }
 }
