@@ -260,11 +260,10 @@ main {
 }
 .btn-post{
   text-align: end;
-  
 }
 .container-post{
   width: 440px;
-  height: 250px;
+  height: 350px;
   border-radius: 9px;
   border: 1px solid #d3dce6;
   background-color: #eaf8ff;
@@ -278,4 +277,9 @@ main {
 
 #input-edit-note {
   height: 30px;
+}
+
+#btn-pen {
+  width: 7%;
+  cursor: pointer;
 }

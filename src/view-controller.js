@@ -82,11 +82,9 @@ export const editNoteOnSubmit = (objNote) => {
   const input = document.getElementById('input-edit-note');
   editNote(input.value, objNote)
     .then(() => {
-      input.value = '';
       console.log('Document successfully updated');
       //  data.message = 'Nota agregada';
     }).catch((error) => {
-      input.value = '';
       console.error('Error updating document: ', error);
       //  data.message = 'Lo sentimos, no se pudo agregar la nota';
     });

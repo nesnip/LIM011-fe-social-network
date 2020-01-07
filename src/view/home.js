@@ -10,41 +10,44 @@ const itemNote = (objNote) => {
   divElement.innerHTML = `
     <div class="container-post">
     <div class="btn-post">
-    <span id="btn-deleted-${objNote.id}">${user.uid === objNote.uid ? '<img id="trash" src="imagenes/delete.png" />' : ''}</span>
-    <button id="btn-edit-${objNote.id}">Editar</button>
-    <button id="btn-pen">Lapicero</button>
+    <span id="btn-deleted-${objNote.id}">${user.uid === objNote.uid ? '<img id="trash" src="imagenes/delete.png" title="Eliminar"/>' : ''}</span>
+    
+    <span id="btn-pen-${objNote.id}">${user.uid === objNote.uid ? '<img id="btn-pen" src="imagenes/edit-button.svg" title="Editar"/>' : ''}</span>
     </div>
       <div class="photo-avatar">
-      
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
         <p id ="nombre-usuario">Publicado el día ${objNote.date}</p>
       </div>
-      <section class="texto-post">
+      <section class="texto-post" id="texto-post-${objNote.id}">
         <p>${objNote.title}</p>
       </section>
     </div>
   `;
 
-  divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'none';
+  // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'none';
 
-  divElement.querySelector('#btn-pen')
+  divElement.querySelector(`#btn-pen-${objNote.id}`)
     .addEventListener('click', () => {
-      const post = document.querySelector('.texto-post');
+      const post = document.querySelector(`#texto-post-${objNote.id}`);
       post.innerHTML = `
       <div class="">
-        <textarea id="input-edit-note" rows="1" cols="5" placeholder="¿Que quieres editar?"></textarea>
+        <textarea id="input-edit-note"></textarea>
+        <button id="btn-edit-${objNote.id}">Guardar cambios</button>
       </div>
       `;
-      divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'block';
+      console.log(post.querySelector(`#btn-edit-${objNote.id}`));
+      post.querySelector(`#btn-edit-${objNote.id}`)
+        .addEventListener('click', () => editNoteOnSubmit(objNote));
+      // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'block';
       return post;
     });
 
   // agregando evento de click al btn eliminar una nota
   divElement.querySelector(`#btn-deleted-${objNote.id}`)
     .addEventListener('click', () => deleteNoteOnClick(objNote));
-  divElement.querySelector(`#btn-edit-${objNote.id}`)
-    .addEventListener('click', () => editNoteOnSubmit(objNote));
+  /* divElement.querySelector(`#btn-edit-${objNote.id}`)
+    .addEventListener('click', () => editNoteOnSubmit(objNote)); */
 
   return divElement;
 };
