@@ -3,12 +3,11 @@
 }
 body {
   margin: 0;
-  background-image: url(./imagenes/fondo-fitness.jpg);
 }
 
 form{
   background-image: url(https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1831&q=80);
-  /* background-image: url(./imagenes/imagen-fondo.jpg); */
+/*   background-image: url(./imagenes/imagen-fondo.jpg);*/  
   background-size: cover;
   display: flex;
   justify-content: flex-end;
@@ -26,7 +25,6 @@ h3 {
   font-family: 'Lobster', cursive;
   font-size: 30px;
   color: #ff75d6;
-  margin: 0 0 15px;
 }
 
 p {
@@ -122,6 +120,10 @@ p {
 
 /* css de home */
 
+.home-style {
+  background-image: url(./imagenes/fondo-fitness.jpg);
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -143,6 +145,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 li a:hover:not(.active) {
@@ -166,39 +169,53 @@ section{
 }
 figure{
   display:row;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  width: 380px;
-  height: 250px;
+  margin: auto;
+  width: 90%;
+  /* width: 380px;
+  height: 250px; */
   border: 1px solid #566a81; 
-  box-shadow: 5px 5px 10px #aaaaaa;
-  border-radius: 9px;
+  /* box-shadow: 5px 5px 10px #aaaaaa; */
+  /* border-radius: 9px 0px; */
   border: 1px solid #d3dce6;
+  border: none;
 }
 .portada{
   border: 2px solid #566a81;   
   background-color: rgba(157, 247, 255, 0.767);
-  width: 380px;
+  width: 100%;
   height: 100px;
   text-align: center;
   border: 3px solid #9acfd6;
-  border-radius: 9px;
+  border: none;
+  border-radius: 9px 9px 0 0;
 }
 .info-usuario{
   border: 2px solid #566a81;   
   background-color: rgb(234, 248, 255);
   width: 100%;
   height: 144px;
-  align-items: center; 
   display: flex; 
+  align-items: center;
   border: 1px solid #d3dce6;
-  border-radius: 9px;
+  border: none;
+  border-radius: 0 0 9px 9px;
 }
+
+div > h3[id="nombre-usuario"] {
+  width: 70%;
+}
+
+#nombre-usuario {
+  text-align: center;
+  justify-content: center;
+  margin: 0px;
+  margin-right: 0px;
+}
+
 .foto-usuario{
-  width: 110px;
-  height: 110px;
-  border-radius:150px;
-  border: 4px solid #21c4c4;   
+  width: 30%;
+  border-radius: 50%;
+  border: 4px solid #21c4c4;
 }
 .avatar-usuario{
   width: 90px;
@@ -226,9 +243,7 @@ main {
 #btn-subir-img{
   margin-left: 15px;
 }
-#nombre-usuario{
-  margin-left: 50px;
-}
+
 #btn-add-note,#btn-subir-img{
   text-align: center;
     color: rgb(24, 32, 32);
@@ -251,9 +266,7 @@ main {
   display:flex;
   margin-left: 12px;
 }
-#nombre-usuario{
-  margin-top: 50px;
-}
+
 .texto-post{
   text-align: center;
   margin-top: 0 px;
@@ -282,4 +295,20 @@ main {
 #btn-pen {
   width: 7%;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  section {
+    align-items: center;
+    justify-content: space-around;
+    margin: 0px;
+  }
+
+  figure {
+    width: 380px;
+    height: 250px;
+    box-shadow: 5px 5px 10px #aaaaaa;
+    border-radius: 9px 0px;
+    margin: 0px;
+  }
 }

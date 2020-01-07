@@ -54,6 +54,7 @@ const itemNote = (objNote) => {
 
 export default (notes) => {
   const home = document.createElement('div');
+  home.classList.add('home-style');
   const user = firebase.auth().currentUser;
   const formContent = `
     <nav>
@@ -70,8 +71,8 @@ export default (notes) => {
         
         </div>
         <div class="info-usuario"> 
-        <p><img src="${user.photoURL}" class="foto-usuario"></p>
-        <h3 id ="nombre-usuario">${user.displayName}</h3>
+        <img src="${user.photoURL}" class="foto-usuario">
+        <div><h3 id ="nombre-usuario">${user.displayName}</h3></div>
         </div>
       </figure>
       <main>
