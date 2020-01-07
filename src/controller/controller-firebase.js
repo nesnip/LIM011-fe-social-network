@@ -33,6 +33,14 @@ export const addNote = (textNewNote) => firebase.firestore().collection('notes')
   date: firebase.firestore.FieldValue.serverTimestamp(),
 });
 
+export const editNote = (textNewNote, idNote) => firebase.firestore().collection('notes').doc(idNote.id).set({
+  title: textNewNote,
+  usuario: firebase.auth().currentUser.displayName,
+  avatar: firebase.auth().currentUser.photoURL,
+  uid: firebase.auth().currentUser.uid,
+  date: firebase.firestore.FieldValue.serverTimestamp(),
+});
+
 export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();
 
 export const getNotes = (callback) => firebase.firestore().collection('notes')
@@ -40,8 +48,6 @@ export const getNotes = (callback) => firebase.firestore().collection('notes')
     const dato = [];
     querySnapshot.forEach((doc) => {
       dato.push({ id: doc.id, ...doc.data() });
-      console.log(doc.data());
     });
-    console.log(dato);
     callback(dato);
   });

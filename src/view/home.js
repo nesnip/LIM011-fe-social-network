@@ -1,6 +1,8 @@
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
-import { signOutSubmit, addNoteOnSubmit, deleteNoteOnClick } from '../view-controller.js';
+import {
+  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit,
+} from '../view-controller.js';
 
 const itemNote = (objNote) => {
   const user = firebase.auth().currentUser;
@@ -9,6 +11,8 @@ const itemNote = (objNote) => {
     <div class="container-post">
     <div class="btn-post">
     <span id="btn-deleted-${objNote.id}">${user.uid === objNote.uid ? '<img id="trash" src="imagenes/delete.png" />' : ''}</span>
+    <button id="btn-edit-${objNote.id}">Editar</button>
+    <button id="btn-pen">Lapicero</button>
     </div>
       <div class="photo-avatar">
       
@@ -18,12 +22,30 @@ const itemNote = (objNote) => {
       </div>
       <section class="texto-post">
         <p>${objNote.title}</p>
-        </section>
+      </section>
     </div>
   `;
+
+  divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'none';
+
+  divElement.querySelector('#btn-pen')
+    .addEventListener('click', () => {
+      const post = document.querySelector('.texto-post');
+      post.innerHTML = `
+      <div class="">
+        <textarea id="input-edit-note" rows="1" cols="5" placeholder="¿Que quieres editar?"></textarea>
+      </div>
+      `;
+      divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'block';
+      return post;
+    });
+
   // agregando evento de click al btn eliminar una nota
   divElement.querySelector(`#btn-deleted-${objNote.id}`)
     .addEventListener('click', () => deleteNoteOnClick(objNote));
+  divElement.querySelector(`#btn-edit-${objNote.id}`)
+    .addEventListener('click', () => editNoteOnSubmit(objNote));
+
   return divElement;
 };
 

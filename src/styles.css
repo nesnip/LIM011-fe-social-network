@@ -275,3 +275,7 @@ main {
   margin-top: 10px;
   margin-bottom: 12px;
 }
+
+#input-edit-note {
+  height: 30px;
+}
