@@ -169,7 +169,6 @@ section{
 }
 figure{
   display:row;
-  margin: auto;
   width: 90%;
   /* width: 380px;
   height: 250px; */
@@ -201,8 +200,13 @@ figure{
   border-radius: 0 0 9px 9px;
 }
 
-div > h3[id="nombre-usuario"] {
+.info-usuario div {
   width: 70%;
+  text-align: center;
+}
+
+.user-prof-name {
+  margin: auto;
 }
 
 #nombre-usuario {
@@ -215,7 +219,7 @@ div > h3[id="nombre-usuario"] {
 }
 
 .foto-usuario{
-  width: 30%;
+  width: 110px;
   border-radius: 50%;
   border: 4px solid #21c4c4;
 }
@@ -329,10 +333,8 @@ main {
 
   figure {
     width: 380px;
-    height: 250px;
-    /* box-shadow: 5px 5px 10px #aaaaaa; */
-    border-radius: 9px 0px;
-    margin: 0 5%;
+    box-shadow: 5px 5px 10px #aaaaaa;
+    border-radius: 9px;
   }
 
   main {

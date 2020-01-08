@@ -18,7 +18,7 @@ const itemNote = (objNote) => {
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <div class="date">
           <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
-          <p id ="nombre-usuario">Publicado el día ${objNote.date.toDate()}</p>
+          <p>Publicado el día ${objNote.date.toDate()}</p>
         </div>
       </div>
       <section class="texto-post" id="texto-post-${objNote.id}">
@@ -30,8 +30,7 @@ const itemNote = (objNote) => {
     </div>
   `;
 
-  // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'none';
-
+  // agregando evemto click al btn pen para editar
   divElement.querySelector(`#btn-pen-${objNote.id}`)
     .addEventListener('click', () => {
       const post = document.querySelector(`#texto-post-${objNote.id}`);
@@ -39,10 +38,13 @@ const itemNote = (objNote) => {
       <div class="">
         <textarea id="input-edit-note"></textarea>
         <button id="btn-edit-${objNote.id}">Guardar cambios</button>
+        <button id="cancel">Cancelar</button>
       </div>
       `;
       console.log(post.querySelector(`#btn-edit-${objNote.id}`));
+      // post.querySelector('#cancel').addEventListener('click', () => );
       post.querySelector('#input-edit-note').value = objNote.title;
+      // agregando evento click al btn editar nota
       post.querySelector(`#btn-edit-${objNote.id}`)
         .addEventListener('click', () => editNoteOnSubmit(objNote));
       return post;
@@ -79,7 +81,7 @@ export default (notes) => {
         </div>
         <div class="info-usuario"> 
         <img src="${user.photoURL}" class="foto-usuario">
-        <div><h3 id ="nombre-usuario">${user.displayName}</h3></div>
+        <div><h3 class ="user-prof-name">${user.displayName}</h3></div>
         </div>
       </figure>
       <main>
