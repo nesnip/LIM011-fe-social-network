@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import {
-  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, timeConverter,
+  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit,
 } from '../view-controller.js';
 
 const itemNote = (objNote) => {
@@ -18,12 +18,16 @@ const itemNote = (objNote) => {
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <div class="date">
           <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
-          <p id ="nombre-usuario">Publicado el día ${objNote.date.toDate()}</p>
+          <p id ="nombre-usuario">${objNote.date.toDate()}</p>
         </div>
       </div>
       <section class="texto-post" id="texto-post-${objNote.id}">
         <p>${objNote.title}</p>
       </section>
+      <div class = "reactions">
+      <p id ="reaction-love">${objNote.love} </p> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
+      </div>
+
     </div>
   `;
 
@@ -39,7 +43,7 @@ const itemNote = (objNote) => {
       </div>
       `;
       console.log(post.querySelector(`#btn-edit-${objNote.id}`));
-      post.querySelector('#input-edit-note').value = 'hola';
+      post.querySelector('#input-edit-note').value = objNote.title;
       post.querySelector(`#btn-edit-${objNote.id}`)
         .addEventListener('click', () => editNoteOnSubmit(objNote));
       // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'block';

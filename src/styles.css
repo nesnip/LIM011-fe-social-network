@@ -211,6 +211,7 @@ div > h3[id="nombre-usuario"] {
   margin: 50px;
   margin-right: 0px;
   margin-left: 0px;
+  margin-bottom: 0;
 }
 
 .foto-usuario{
@@ -275,8 +276,11 @@ main {
 .btn-post{
   text-align: end;
 }
-
-.date {
+#love{
+  height: 40px;
+  width: 40px;
+}
+.reactions , .date {
   text-align: center;
 }
 
