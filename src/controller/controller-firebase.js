@@ -23,8 +23,6 @@ export const facebookLogin = () => {
 };
 
 export const signOut = () => firebase.auth().signOut();
-
-
 export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({
   title: textNewNote,
   usuario: firebase.auth().currentUser.displayName,
@@ -40,7 +38,6 @@ export const editNote = (textEditNote, objNote) => firebase.firestore().collecti
   uid: firebase.auth().currentUser.uid,
   date: objNote.date,
 });
-
 export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();
 
 export const getNotes = (callback) => firebase.firestore().collection('notes').orderBy('date', 'desc')

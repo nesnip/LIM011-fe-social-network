@@ -21,14 +21,6 @@ export const signInOnSubmit = () => {
       alert(errorMessage);
     });
 };
-
-export const accesoLogin = () => {
-  const user = firebase.auth().currentUser;
-  if (user != null) {
-    console.log('logueado', user.email);
-  }
-};
-
 export const loginWithGoogle = () => {
   googleLogin().then(() => {
     changeHash('/Home');
@@ -91,3 +83,7 @@ export const editNoteOnSubmit = (objNote) => {
 };
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
+export const reactionLoveOnClick = (objNote) => {
+  const numbersOfLove = document.querySelector('#reaction-love');
+  numbersOfLove.innerHTML = countLove(objNote.id, objNote.love);
+};

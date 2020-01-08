@@ -161,7 +161,6 @@ textarea{
 
 }
 section{
-  margin-top: 8px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -268,7 +267,6 @@ main {
   display:flex;
   margin-left: 12px;
 }
-
 .texto-post{
   text-align: center;
   margin-top: 0 px;
