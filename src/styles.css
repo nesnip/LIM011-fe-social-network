@@ -250,7 +250,7 @@ main {
   margin-left: 15px;
 }
 
-#btn-add-note,#btn-subir-img{
+#btn-add-note, #btn-subir-img{
   text-align: center;
     color: rgb(24, 32, 32);
     display: inline-block;
@@ -260,11 +260,12 @@ main {
     width: 100px;
     background-color: rgb(56, 216, 216);
     border-radius: 50px;
+    border: none;
+    cursor: pointer;
 }
-#btn-add-note:hover {
+
+#btn-add-note:hover, #btn-subir-img:hover {
   padding-top: 7px;
-}
-#btn-add-note:hover {
   color: rgb(24, 19, 19);
   background-color: rgb(56, 177, 199);
 }
@@ -308,7 +309,6 @@ main {
   border-radius: 9px;
   border: 1px solid #d3dce6;
   background-color: #eaf8ff;
-  margin: 0% 15% ;
   box-shadow: 5px 5px 10px #aaaaaa;
   display: flex;
   flex-direction: column;
@@ -335,6 +335,7 @@ main {
     width: 380px;
     box-shadow: 5px 5px 10px #aaaaaa;
     border-radius: 9px;
+    margin-left: 0;
   }
 
   main {
