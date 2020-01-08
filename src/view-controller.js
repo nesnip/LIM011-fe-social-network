@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 import {
   signIn, logIn, googleLogin, facebookLogin, signOut,
-  addNote, deleteNote, saveUsers, editNote,
+  addNote, deleteNote, saveUsers, editNote, countLove,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -92,16 +92,7 @@ export const editNoteOnSubmit = (objNote) => {
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
 
-export const timeConverter = (unixTimestamp) => {
-  const a = new Date(unixTimestamp * 1000);
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const year = a.getFullYear();
-  const month = months[a.getMonth()];
-  const date = a.getDate();
-  const hour = a.getHours();
-  const min = a.getMinutes();
-  const sec = a.getSeconds();
-  const time = `${date} ${month} ${year} ${hour}:${min}:${sec}`;
-  console.log(time);
-  return time;
+export const countLoveOnClick = (objNote) => {
+  const i = +1;
+  countLove(objNote, i);
 };

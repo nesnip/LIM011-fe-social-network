@@ -211,6 +211,7 @@ div > h3[id="nombre-usuario"] {
   margin: 50px;
   margin-right: 0px;
   margin-left: 0px;
+  margin-bottom: 0;
 }
 
 .foto-usuario{
@@ -276,8 +277,25 @@ main {
   text-align: end;
 }
 
-.date {
+#love {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.reactions, .date {
   text-align: center;
+}
+
+.reactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#reaction-love {
+  font-size: 20px;
 }
 
 .container-post{

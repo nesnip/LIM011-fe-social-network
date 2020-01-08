@@ -31,14 +31,11 @@ export const addNote = (textNewNote) => firebase.firestore().collection('notes')
   avatar: firebase.auth().currentUser.photoURL,
   uid: firebase.auth().currentUser.uid,
   date: firebase.firestore.Timestamp.fromDate(new Date()),
+  love: 0,
 });
 
-export const editNote = (textEditNote, objNote) => firebase.firestore().collection('notes').doc(objNote.id).set({
+export const editNote = (textEditNote, objNote) => firebase.firestore().collection('notes').doc(objNote.id).update({
   title: textEditNote,
-  usuario: firebase.auth().currentUser.displayName,
-  avatar: firebase.auth().currentUser.photoURL,
-  uid: firebase.auth().currentUser.uid,
-  date: objNote.date,
 });
 
 export const deleteNote = (idNote) => firebase.firestore().collection('notes').doc(idNote).delete();
@@ -51,3 +48,7 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
     });
     callback(dato);
   });
+
+export const countLove = (objNote, i) => firebase.firestore().collection('notes').doc(objNote.id).update({
+  love: firebase.firestore.FieldValue.increment(i),
+});
