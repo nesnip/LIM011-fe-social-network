@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import {
-  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit,
+  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, countLoveOnClick,
 } from '../view-controller.js';
 
 const itemNote = (objNote) => {
@@ -25,9 +25,8 @@ const itemNote = (objNote) => {
         <p>${objNote.title}</p>
       </section>
       <div class = "reactions">
-      <p id ="reaction-love">${objNote.love} </p> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
+        <span id ="reaction-love">${objNote.love} </span> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
       </div>
-
     </div>
   `;
 
@@ -46,16 +45,17 @@ const itemNote = (objNote) => {
       post.querySelector('#input-edit-note').value = objNote.title;
       post.querySelector(`#btn-edit-${objNote.id}`)
         .addEventListener('click', () => editNoteOnSubmit(objNote));
-      // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'block';
       return post;
     });
+
+  // agregando evento click al btn love
+  divElement.querySelector('#love')
+    .addEventListener('click', () => countLoveOnClick(objNote));
 
   // agregando evento de click al btn eliminar una nota
   divElement.querySelector(`#btn-deleted-${objNote.id}`)
     .addEventListener('click', () => deleteNoteOnClick(objNote));
-  /* divElement.querySelector(`#btn-edit-${objNote.id}`)
-    .addEventListener('click', () => editNoteOnSubmit(objNote)); */
-  // console.log(objNote.date.fromDate(new Date()));
+
   return divElement;
 };
 

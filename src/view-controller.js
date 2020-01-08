@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 import {
   signIn, logIn, googleLogin, facebookLogin, signOut,
-  addNote, deleteNote, saveUsers, editNote,
+  addNote, deleteNote, saveUsers, editNote, countLove,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -83,7 +83,8 @@ export const editNoteOnSubmit = (objNote) => {
 };
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
-export const reactionLoveOnClick = (objNote) => {
-  const numbersOfLove = document.querySelector('#reaction-love');
-  numbersOfLove.innerHTML = countLove(objNote.id, objNote.love);
+
+export const countLoveOnClick = (objNote) => {
+  const i = +1;
+  countLove(objNote, i);
 };

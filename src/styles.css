@@ -274,12 +274,26 @@ main {
 .btn-post{
   text-align: end;
 }
-#love{
-  height: 40px;
-  width: 40px;
+
+#love {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  cursor: pointer;
 }
-.reactions , .date {
+
+.reactions, .date {
   text-align: center;
+}
+
+.reactions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#reaction-love {
+  font-size: 20px;
 }
 
 .container-post{
