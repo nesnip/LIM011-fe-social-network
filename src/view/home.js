@@ -42,7 +42,7 @@ const itemNote = (objNote) => {
       </div>
       `;
       console.log(post.querySelector(`#btn-edit-${objNote.id}`));
-      post.querySelector('#cancel').addEventListener('click', () => );
+      // post.querySelector('#cancel').addEventListener('click', () => );
       post.querySelector('#input-edit-note').value = objNote.title;
       // agregando evento click al btn editar nota
       post.querySelector(`#btn-edit-${objNote.id}`)
