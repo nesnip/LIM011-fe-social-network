@@ -85,6 +85,7 @@ export const editNoteOnSubmit = (objNote) => {
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
 
 export const countLoveOnClick = (objNote) => {
+  // const user = firebase.auth().currentUser;
   const i = +1;
   countLove(objNote, i);
 };

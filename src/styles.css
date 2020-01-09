@@ -14,7 +14,6 @@ form{
   align-items: center;
   height: 100vh;
 }
-
 h2 {
   font-family: 'Lobster', cursive;
   font-size: 45px;
@@ -122,6 +121,7 @@ p {
 
 .home-style {
   background-image: url(./imagenes/fondo-fitness.jpg);
+  min-height: 100vh;
 }
 
 ul {

@@ -30,6 +30,7 @@ export const addNote = (textNewNote) => firebase.firestore().collection('notes')
   uid: firebase.auth().currentUser.uid,
   date: firebase.firestore.Timestamp.fromDate(new Date()),
   love: 0,
+  lovers: [],
 });
 
 export const editNote = (textEditNote, objNote) => firebase.firestore().collection('notes').doc(objNote.id).update({
@@ -48,4 +49,5 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
 
 export const countLove = (objNote, i) => firebase.firestore().collection('notes').doc(objNote.id).update({
   love: firebase.firestore.FieldValue.increment(i),
+  lovers: objNote.lovers.concat([firebase.auth().currentUser.displayName]),
 });
