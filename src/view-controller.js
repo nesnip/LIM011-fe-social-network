@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 import {
   signIn, logIn, googleLogin, facebookLogin, signOut,
-  addNote, deleteNote, saveUsers, editNote, countLove,
+  addNote, deleteNote, saveUsers, editNote, countLove, getNotes,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -63,10 +63,11 @@ export const signOutSubmit = () => {
 export const addNoteOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-note');
+  const select = document.getElementById('privacy');
   if (input.value === '') {
     alert('Campos vacíos');
   } else {
-    addNote(input.value)
+    addNote(input.value, select.value)
       .then((docRef) => {
         input.value = '';
         console.log('Document written with ID: ', docRef.id);
@@ -89,6 +90,12 @@ export const editNoteOnSubmit = (objNote) => {
       //  data.message = 'Lo sentimos, no se pudo agregar la nota';
     });
 };
+
+/* export const getNotesPrivacy = () => {
+  if (condition) {
+    getNotes();
+  }
+}; */
 
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
 

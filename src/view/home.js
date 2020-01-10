@@ -17,7 +17,7 @@ const itemNote = (objNote) => {
       <div class="photo-avatar">
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <div class="date">
-          <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
+          <p id ="nombre-usuario">Publicado por ${objNote.user}</p>
           <p>Publicado el día ${objNote.date.toDate()}</p>
         </div>
       </div>
@@ -88,6 +88,10 @@ export default (notes) => {
       <main>
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
         <section id="botones-post">
+        <select name="select" id="privacy">
+          <option value="publico">Publico</option>
+          <option value="privado">Privado</option>
+        </select>
         <button id="btn-subir-img"> imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
         </section>

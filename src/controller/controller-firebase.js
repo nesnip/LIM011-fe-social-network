@@ -6,7 +6,7 @@ export const logIn = (email, password) => firebase.auth().signInWithEmailAndPass
 export const saveUsers = () => {
   const user = firebase.auth().currentUser;
   firebase.firestore().collection('users').doc(user.uid).set({
-    usuario: user.displayName,
+    user: user.displayName,
     avatar: user.photoURL,
     uid: user.uid,
     email: user.email,
@@ -25,12 +25,13 @@ export const facebookLogin = () => {
 export const signOut = () => firebase.auth().signOut();
 
 
-export const addNote = (textNewNote) => firebase.firestore().collection('notes').add({
+export const addNote = (textNewNote, privacidad) => firebase.firestore().collection('notes').add({
   title: textNewNote,
-  usuario: firebase.auth().currentUser.displayName,
+  user: firebase.auth().currentUser.displayName,
   avatar: firebase.auth().currentUser.photoURL,
   uid: firebase.auth().currentUser.uid,
   date: firebase.firestore.Timestamp.fromDate(new Date()),
+  privacy: privacidad,
   love: 0,
   lovers: [],
 });
@@ -46,8 +47,11 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
     const dato = [];
     querySnapshot.forEach((doc) => {
       dato.push({ id: doc.id, ...doc.data() });
+      console.log(doc.data());
     });
+    console.log(dato);
     callback(dato);
+    console.log(callback);
   });
 
 export const countLove = (objNote, i) => firebase.firestore().collection('notes').doc(objNote.id).update({
