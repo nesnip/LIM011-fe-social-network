@@ -55,10 +55,11 @@ export const signOutSubmit = () => {
 export const addNoteOnSubmit = (event) => {
   event.preventDefault();
   const input = document.getElementById('input-new-note');
+  const select = document.getElementById('privacy');
   if (input.value === '') {
     alert('Campos vacíos');
   } else {
-    addNote(input.value)
+    addNote(input.value, select.value)
       .then((docRef) => {
         input.value = '';
         console.log('Document written with ID: ', docRef.id);

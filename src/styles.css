@@ -212,6 +212,10 @@ div > h3[id="nombre-usuario"] {
   margin-left: 0px;
   margin-bottom: 0;
 }
+#date-post{
+  text-align: center;
+  justify-content: center;
+}
 
 .foto-usuario{
   width: 30%;
@@ -282,7 +286,7 @@ main {
   cursor: pointer;
 }
 
-.reactions, .date {
+.reactions,.date {
   text-align: center;
 }
 

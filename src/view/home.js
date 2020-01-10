@@ -17,8 +17,8 @@ const itemNote = (objNote) => {
       <div class="photo-avatar">
         <p>${objNote.avatar === null ? '<img src="../imagenes/user.svg" class="avatar-usuario">' : `<img src="${objNote.avatar}" class="avatar-usuario">`}</p>
         <div class="date">
-          <p id ="nombre-usuario">Publicado por ${objNote.usuario}</p>
-          <p id ="nombre-usuario">${objNote.date.toDate()}</p>
+          <p id ="nombre-usuario">Publicado por ${objNote.user}</p>
+          <p id ="date-post">${objNote.date.toDate()}</p>
         </div>
       </div>
       <section class="texto-post" id="texto-post-${objNote.id}">
@@ -85,6 +85,11 @@ export default (notes) => {
       </figure>
       <main>
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
+      <!-- post privacy -->
+        <select id="privacy"> 
+        <option value="public"> Público </option>
+        <option value="private"> Privado </option>
+        </select>
         <section id="botones-post">
         <button id="btn-subir-img"> imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
@@ -99,7 +104,6 @@ export default (notes) => {
   `;
 
   home.innerHTML = formContent;
-
   const btnLogOut = home.querySelector('#btn-cerrar');
   btnLogOut.addEventListener('click', signOutSubmit);
   const buttonAddNote = home.querySelector('#btn-add-note');
