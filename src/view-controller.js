@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 import {
   signIn, logIn, googleLogin, facebookLogin, signOut,
-  addNote, deleteNote, saveUsers, editNote, countLove, getNotes,
+  addNote, deleteNote, saveUsers, editNote, countLove,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -20,13 +20,6 @@ export const signInOnSubmit = () => {
       const errorMessage = error.message;
       alert(errorMessage);
     });
-};
-
-export const accesoLogin = () => {
-  const user = firebase.auth().currentUser;
-  if (user != null) {
-    console.log('logueado', user.email);
-  }
 };
 
 export const loginWithGoogle = () => {
@@ -91,15 +84,15 @@ export const editNoteOnSubmit = (objNote) => {
     });
 };
 
-/* export const getNotesPrivacy = () => {
-  if (condition) {
-    getNotes();
-  }
-}; */
-
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
 
 export const countLoveOnClick = (objNote) => {
-  const i = +1;
-  countLove(objNote, i);
+  const user = firebase.auth().currentUser;
+  objNote.lovers.forEach((element) => {
+    if (user.uid !== element.uid) {
+      const i = +1;
+      countLove(objNote, i);
+    }
+    console.log(element);
+  });
 };

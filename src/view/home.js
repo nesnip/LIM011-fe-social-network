@@ -26,7 +26,6 @@ const itemNote = (objNote) => {
       </section>
       <div class = "reactions">
         <span id ="reaction-love">${objNote.love} </span> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
-        <span>Amaron tu publicación: ${objNote.lovers}</span>
         </div>
     </div>
   `;
@@ -89,8 +88,8 @@ export default (notes) => {
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
         <section id="botones-post">
         <select name="select" id="privacy">
-          <option value="publico">Publico</option>
-          <option value="privado">Privado</option>
+          <option value="public">Publico</option>
+          <option value="private">Privado</option>
         </select>
         <button id="btn-subir-img"> imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
