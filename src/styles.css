@@ -1,6 +1,4 @@
-* {
-    font-family: Roboto, sans-serif;
-}
+
 body {
   margin: 0;
 }
@@ -14,6 +12,7 @@ form{
   align-items: center;
   height: 100vh;
 }
+
 h2 {
   font-family: 'Lobster', cursive;
   font-size: 45px;
@@ -161,6 +160,7 @@ textarea{
 
 }
 section{
+  margin-top: 8px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -168,7 +168,6 @@ section{
 }
 figure{
   display:row;
-  margin: auto;
   width: 90%;
   /* width: 380px;
   height: 250px; */
@@ -179,7 +178,6 @@ figure{
   border: none;
 }
 .portada{
-  border: 2px solid #566a81;   
   background-color: rgba(157, 247, 255, 0.767);
   width: 100%;
   height: 100px;
@@ -189,19 +187,24 @@ figure{
   border-radius: 9px 9px 0 0;
 }
 .info-usuario{
-  border: 2px solid #566a81;   
+  /* border: 2px solid #566a81; */   
   background-color: rgb(234, 248, 255);
   width: 100%;
   height: 144px;
   display: flex; 
   align-items: center;
-  border: 1px solid #d3dce6;
+  /* border: 1px solid #d3dce6; */
   border: none;
   border-radius: 0 0 9px 9px;
 }
 
-div > h3[id="nombre-usuario"] {
+.info-usuario div {
   width: 70%;
+  text-align: center;
+}
+
+.user-prof-name {
+  margin: auto;
 }
 
 #nombre-usuario {
@@ -212,13 +215,9 @@ div > h3[id="nombre-usuario"] {
   margin-left: 0px;
   margin-bottom: 0;
 }
-#date-post{
-  text-align: center;
-  justify-content: center;
-}
 
 .foto-usuario{
-  width: 30%;
+  width: 110px;
   border-radius: 50%;
   border: 4px solid #21c4c4;
 }
@@ -249,7 +248,7 @@ main {
   margin-left: 15px;
 }
 
-#btn-add-note,#btn-subir-img{
+#btn-add-note, #btn-subir-img{
   text-align: center;
     color: rgb(24, 32, 32);
     display: inline-block;
@@ -259,11 +258,12 @@ main {
     width: 100px;
     background-color: rgb(56, 216, 216);
     border-radius: 50px;
+    border: none;
+    cursor: pointer;
 }
-#btn-add-note:hover {
+
+#btn-add-note:hover, #btn-subir-img:hover {
   padding-top: 7px;
-}
-#btn-add-note:hover {
   color: rgb(24, 19, 19);
   background-color: rgb(56, 177, 199);
 }
@@ -271,6 +271,7 @@ main {
   display:flex;
   margin-left: 12px;
 }
+
 .texto-post{
   text-align: center;
   margin-top: 0 px;
@@ -286,7 +287,7 @@ main {
   cursor: pointer;
 }
 
-.reactions,.date {
+.reactions, .date {
   text-align: center;
 }
 
@@ -306,7 +307,6 @@ main {
   border-radius: 9px;
   border: 1px solid #d3dce6;
   background-color: #eaf8ff;
-  margin: 0% 15% ;
   box-shadow: 5px 5px 10px #aaaaaa;
   display: flex;
   flex-direction: column;
@@ -324,20 +324,10 @@ main {
 }
 
 @media only screen and (min-width: 768px) {
-  section {
-    align-items: center;
-    margin: 0px;
-  }
-
   figure {
     width: 380px;
-    height: 250px;
-    /* box-shadow: 5px 5px 10px #aaaaaa; */
-    border-radius: 9px 0px;
-    margin: 0 5%;
-  }
-
-  main {
-
+    box-shadow: 5px 5px 10px #aaaaaa;
+    border-radius: 9px;
+    margin-left: 0;
   }
 }

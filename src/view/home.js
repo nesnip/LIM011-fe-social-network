@@ -26,7 +26,6 @@ const itemNote = (objNote) => {
       </section>
       <div class = "reactions">
         <span id ="reaction-love">${objNote.love} </span> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
-      <span> Amaron tu publicacion: ${objNote.lovers}</span>
         </div>
     </div>
   `;

@@ -32,6 +32,7 @@ export const addNote = (textNewNote, selectPrivacy) => firebase.firestore().coll
   privacy: selectPrivacy,
   love: 0,
   lovers: [],
+
 });
 
 export const editNote = (textEditNote, objNote) => firebase.firestore().collection('notes').doc(objNote.id).update({
@@ -42,13 +43,21 @@ export const deleteNote = (idNote) => firebase.firestore().collection('notes').d
 export const getNotes = (callback) => firebase.firestore().collection('notes').orderBy('date', 'desc')
   .onSnapshot((querySnapshot) => {
     const dato = [];
+    const user = firebase.auth().currentUser;
     querySnapshot.forEach((doc) => {
-      dato.push({ id: doc.id, ...doc.data() });
+      if (doc.data().privacy === 'public') {
+        dato.push({ id: doc.id, ...doc.data() });
+      } if (doc.data().privacy === 'private' && doc.data().uid === user.uid) {
+        dato.push({ id: doc.id, ...doc.data() });
+      }
     });
     callback(dato);
   });
 
 export const countLove = (objNote, i) => firebase.firestore().collection('notes').doc(objNote.id).update({
   love: firebase.firestore.FieldValue.increment(i),
-  lovers: objNote.lovers.concat([firebase.auth().currentUser.displayName]),
+  lovers: objNote.lovers.concat({
+    user: firebase.auth().currentUser.displayName,
+    uid: firebase.auth().currentUser.uid,
+  }),
 });
