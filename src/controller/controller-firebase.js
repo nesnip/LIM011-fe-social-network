@@ -32,7 +32,7 @@ export const addNote = (textNewNote, selectPrivacy) => firebase.firestore().coll
   privacy: selectPrivacy,
   love: 0,
   lovers: [],
-
+  comments:[],
 });
 
 export const editNote = (textEditNote, objNote) => firebase.firestore().collection('notes').doc(objNote.id).update({
@@ -58,6 +58,14 @@ export const countLove = (objNote, i) => firebase.firestore().collection('notes'
   love: firebase.firestore.FieldValue.increment(i),
   lovers: objNote.lovers.concat({
     user: firebase.auth().currentUser.displayName,
-    uid: firebase.auth().currentUser.uid,
+    uidlover: firebase.auth().currentUser.uid,
+  }),
+});
+export const addComment = (textComment, objNote) => firebase.firestore().collection('notes').doc(objNote.id).update({
+  comments: objNote.comments.concat({
+    photoUserComment:firebase.auth().currentUser.photoURL, 
+    userComment:firebase.auth().currentUser.displayName,
+    comment:textComment,
+    dateComment: firebase.firestore.Timestamp.fromDate(new Date()),
   }),
 });

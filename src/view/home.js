@@ -1,12 +1,14 @@
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import {
-  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, countLoveOnClick,
+  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, countLoveOnClick,addCommentOnSubmit,
 } from '../view-controller.js';
 
 const itemNote = (objNote) => {
   const user = firebase.auth().currentUser;
   const divElement = document.createElement('div');
+  console.log(objNote);
+  
   divElement.innerHTML = `
     <div class="container-post">
     <div class="btn-post">
@@ -26,6 +28,10 @@ const itemNote = (objNote) => {
       </section>
       <div class = "reactions">
         <span id ="reaction-love">${objNote.love} </span> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
+        </div>
+        <div class = "comments">
+        <textarea id="input-comment-note" placeholder="Escribir un comentario..."></textarea> 
+        <span id="btn-add-${objNote.id}"><img id="btn-add" src="imagenes/plus.png" title="agregar"/></span>
         </div>
     </div>
   `;
@@ -55,6 +61,9 @@ const itemNote = (objNote) => {
   // agregando evento de click al btn eliminar una nota
   divElement.querySelector(`#btn-deleted-${objNote.id}`)
     .addEventListener('click', () => deleteNoteOnClick(objNote));
+
+    divElement.querySelector(`#btn-add-${objNote.id}`)
+    .addEventListener('click', () => addCommentOnSubmit(objNote));
 
   return divElement;
 };

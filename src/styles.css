@@ -317,12 +317,19 @@ main {
 #input-edit-note {
   height: 30px;
 }
-
+#input-comment-note {
+  height: 30px;
+}
 #btn-pen {
   width: 7%;
   cursor: pointer;
 }
-
+.comments{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(176, 247, 247);
+}
 @media only screen and (min-width: 768px) {
   figure {
     width: 380px;
