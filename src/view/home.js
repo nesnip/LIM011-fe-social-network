@@ -38,9 +38,7 @@ const itemNote = (objNote) => {
    
   `;
 
-
-  // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'none';
-
+  // agregando evemto click al btn pen para editar
   divElement.querySelector(`#btn-pen-${objNote.id}`)
     .addEventListener('click', () => {
       const post = document.querySelector(`#texto-post-${objNote.id}`);
@@ -48,10 +46,13 @@ const itemNote = (objNote) => {
       <div class="">
         <textarea id="input-edit-note"></textarea>
         <button id="btn-edit-${objNote.id}">Guardar cambios</button>
+        <button id="cancel">Cancelar</button>
       </div>
       `;
       console.log(post.querySelector(`#btn-edit-${objNote.id}`));
+      // post.querySelector('#cancel').addEventListener('click', () => );
       post.querySelector('#input-edit-note').value = objNote.title;
+      // agregando evento click al btn editar nota
       post.querySelector(`#btn-edit-${objNote.id}`)
         .addEventListener('click', () => editNoteOnSubmit(objNote));
       return post;
@@ -99,7 +100,7 @@ export default (notes) => {
         </div>
         <div class="info-usuario"> 
         <img src="${user.photoURL}" class="foto-usuario">
-        <div><h3 id ="nombre-usuario">${user.displayName}</h3></div>
+        <div><h3 class ="user-prof-name">${user.displayName}</h3></div>
         </div>
       </figure>
       <main>
@@ -113,6 +114,10 @@ export default (notes) => {
       </div>
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
         <section id="botones-post">
+        <select name="select" id="privacy">
+          <option value="public">Publico</option>
+          <option value="private">Privado</option>
+        </select>
         <button id="btn-subir-img"> imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
         </section>

@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 import {
   signIn, logIn, googleLogin, facebookLogin, signOut,
-  addNote, addComment, deleteNote, saveUsers, editNote, countLove,
+  addNote, addComment, deleteNote, saveUsers, editNote, countLove, dislike,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
@@ -21,6 +21,7 @@ export const signInOnSubmit = () => {
       alert(errorMessage);
     });
 };
+
 export const loginWithGoogle = () => {
   googleLogin().then(() => {
     changeHash('/Home');
@@ -100,6 +101,11 @@ export const addCommentOnSubmit = (objNote) => {
 export const deleteNoteOnClick = (objNote) => deleteNote(objNote.id);
 
 export const countLoveOnClick = (objNote) => {
-  const i = +1;
-  countLove(objNote, i);
+  const user = firebase.auth().currentUser;
+  console.log(objNote.lovers.some((element) => element.uid === user.uid));
+  if (objNote.lovers.some((element) => element.uid === user.uid)) {
+    dislike(objNote);
+  } else {
+    countLove(objNote);
+  }
 };
