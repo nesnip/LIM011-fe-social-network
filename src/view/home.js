@@ -1,13 +1,14 @@
 /* eslint-disable import/named */
 /* eslint-disable import/extensions */
 import {
-  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, countLoveOnClick,addCommentOnSubmit,
+  // eslint-disable-next-line max-len
+  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, countLoveOnClick, addCommentOnSubmit,
 } from '../view-controller.js';
 
 const itemNote = (objNote) => {
   const user = firebase.auth().currentUser;
   const divElement = document.createElement('div');
- 
+
   divElement.innerHTML = `
     <div class="container-post">
     <div class="btn-post">
@@ -36,8 +37,8 @@ const itemNote = (objNote) => {
     </div>
    
   `;
- 
-  
+
+
   // divElement.querySelector(`#btn-edit-${objNote.id}`).style.display = 'none';
 
   divElement.querySelector(`#btn-pen-${objNote.id}`)
@@ -55,17 +56,17 @@ const itemNote = (objNote) => {
         .addEventListener('click', () => editNoteOnSubmit(objNote));
       return post;
     });
-    
-    divElement.querySelector(`#btn-comment-${objNote.id}`).addEventListener('click',() => {
-     const comment =document.querySelector(`#comments-${objNote.id}`);
-     comment.innerHTML = `
+
+  divElement.querySelector(`#btn-comment-${objNote.id}`).addEventListener('click', () => {
+    const comment = document.querySelector(`#comments-${objNote.id}`);
+    comment.innerHTML = `
      <textarea id="input-comment-note" placeholder="Escribir un comentario..."></textarea> 
     <span id="btn-add-${objNote.id}"><img id="btn-add-comment" src="imagenes/send.png" title="agregar"/></span>
      `;
-     comment.querySelector(`#btn-add-${objNote.id}`)
-     .addEventListener('click', () => addCommentOnSubmit(objNote));
-     return comment;
-    })
+    comment.querySelector(`#btn-add-${objNote.id}`)
+      .addEventListener('click', () => addCommentOnSubmit(objNote));
+    return comment;
+  });
 
   // agregando evento click al btn love
   divElement.querySelector('#love')
