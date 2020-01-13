@@ -102,3 +102,4 @@ export const countLoveOnClick = (objNote) => {
    const i = +1;
       countLove(objNote, i);
    }
+   
