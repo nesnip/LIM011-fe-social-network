@@ -56,6 +56,7 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
 
 export const addComment = (textComment, objNote) => firebase.firestore().collection('notes').doc(objNote.id).update({
   comments: objNote.comments.concat({
+    uidComment: firebase.auth().currentUser.uid,
     photoUserComment: firebase.auth().currentUser.photoURL,
     userComment: firebase.auth().currentUser.displayName,
     comment: textComment,
@@ -81,5 +82,11 @@ export const dislike = (objNote) => {
   firebase.firestore().collection('notes').doc(objNote.id).update({
     love: firebase.firestore.FieldValue.increment(-1),
     lovers: objNote.lovers.filter((element) => element.uid !== user.uid),
+  });
+};
+
+export const deleteComments = (objNote, input) => {
+  firebase.firestore().collection('notes').doc(objNote.id).update({
+    comments: objNote.comments.filter((element) => element.comment !== input),
   });
 };

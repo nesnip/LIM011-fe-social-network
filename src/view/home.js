@@ -2,13 +2,13 @@
 /* eslint-disable import/extensions */
 import {
   // eslint-disable-next-line max-len
-  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit, countLoveOnClick, addCommentOnSubmit,
+  signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit,
+  countLoveOnClick, addCommentOnSubmit, deleteCommentsOnClick,
 } from '../view-controller.js';
 
 const itemNote = (objNote) => {
   const user = firebase.auth().currentUser;
   const divElement = document.createElement('div');
-
   divElement.innerHTML = `
     <div class="container-post">
     <div class="btn-post">
@@ -28,15 +28,29 @@ const itemNote = (objNote) => {
       <div class = "reactions">
         <span id ="reaction-love">${objNote.love} </span> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
         <span id="btn-comment-${objNote.id}">'<img id="btn-comment" src="imagenes/comment.png" title="comentar"/></span> 
+      </div>
     </div>
-    </div>
-    <span>${objNote.comments} </span>
+    <ul id="aca-se-pega"></ul>
     <div class = "comments">
-    <div id = "comments-${objNote.id}">
+      <div id = "comments-${objNote.id}">
+      </div>
     </div>
-    </div>
-   
   `;
+
+  // Mostrando cada comentario de cada post
+  objNote.comments.forEach((element) => {
+    const ul = divElement.querySelector('#aca-se-pega');
+    const liElement = document.createElement('li');
+    liElement.innerHTML = `
+      <img src="${element.photoUserComment}" class="avatar-usuario">
+      <span>${element.userComment}</span>
+      <span id="btn-deleted-${element.uidComment}">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
+      <p id="element-comment">${element.comment}</p>
+    `;
+    ul.appendChild(liElement);
+    liElement.querySelector(`#btn-deleted-${element.uidComment}`)
+      .addEventListener('click', () => deleteCommentsOnClick(objNote));
+  });
 
   // agregando evemto click al btn pen para editar
   divElement.querySelector(`#btn-pen-${objNote.id}`)
@@ -114,10 +128,6 @@ export default (notes) => {
       </div>
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
         <section id="botones-post">
-        <select name="select" id="privacy">
-          <option value="public">Publico</option>
-          <option value="private">Privado</option>
-        </select>
         <button id="btn-subir-img"> imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
         </section>
