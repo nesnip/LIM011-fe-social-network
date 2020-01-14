@@ -38,18 +38,22 @@ const itemNote = (objNote) => {
   `;
 
   // Mostrando cada comentario de cada post
-  objNote.comments.forEach((element) => {
+  objNote.comments.forEach((element, index) => {
     const ul = divElement.querySelector('#aca-se-pega');
     const liElement = document.createElement('li');
     liElement.innerHTML = `
       <img src="${element.photoUserComment}" class="avatar-usuario">
       <span>${element.userComment}</span>
-      <span id="btn-deleted-${element.uidComment}">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
+      <span id="btn-deleted-${index}">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
       <p id="element-comment">${element.comment}</p>
+      <p id="date-comment">${element.dateComment}</p>
     `;
     ul.appendChild(liElement);
-    liElement.querySelector(`#btn-deleted-${element.uidComment}`)
-      .addEventListener('click', () => deleteCommentsOnClick(objNote));
+    liElement.querySelector(`#btn-deleted-${index}`)
+      .addEventListener('click', () => {
+        console.log(`#btn-deleted-${index}`);
+        deleteCommentsOnClick(objNote, index);
+      });
   });
 
   // agregando evemto click al btn pen para editar

@@ -85,8 +85,8 @@ export const dislike = (objNote) => {
   });
 };
 
-export const deleteComments = (objNote, input) => {
+export const deleteComments = (objNote, i) => {
   firebase.firestore().collection('notes').doc(objNote.id).update({
-    comments: objNote.comments.filter((element) => element.comment !== input),
+    comments: objNote.comments.filter((element, position) => position !== i),
   });
 };
