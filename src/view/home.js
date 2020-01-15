@@ -70,7 +70,7 @@ const itemNote = (objNote) => {
   });
 
   // MOSTRANDO COMENTARIOS de cada post
-  /* objNote.comments.forEach((element, index) => {
+  objNote.comments.forEach((element, index) => {
     const ul = divElement.querySelector('#aca-se-pega');
     const liElement = document.createElement('li');
     liElement.innerHTML = `
@@ -87,7 +87,7 @@ const itemNote = (objNote) => {
         deleteCommentsOnClick(objNote, index);
       });
   });
- */
+
   // Agregando evento click al btn LOVE de un post
   divElement.querySelector('#love')
     .addEventListener('click', () => countLoveOnClick(objNote));
