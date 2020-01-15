@@ -1,13 +1,9 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable import/extensions */
 import {
   signIn, logIn, googleLogin, facebookLogin, signOut,
   addNote, addComment, deleteNote, saveUsers, editNote, countLove, dislike, deleteComments,
 } from './controller/controller-firebase.js';
 
 const changeHash = (hash) => {
-  // eslint-disable-next-line no-restricted-globals
   location.hash = hash;
 };
 export const signInOnSubmit = () => {
@@ -64,7 +60,6 @@ export const addNoteOnSubmit = (event) => {
       .then((docRef) => {
         input.value = '';
         console.log('Document written with ID: ', docRef.id);
-        console.log(docRef.id);
       }).catch((error) => {
         input.value = '';
         console.error('Error adding document: ', error);
@@ -77,10 +72,8 @@ export const editNoteOnSubmit = (objNote) => {
   editNote(input.value, objNote)
     .then(() => {
       console.log('Document successfully updated');
-      //  data.message = 'Nota agregada';
     }).catch((error) => {
       console.error('Error updating document: ', error);
-      //  data.message = 'Lo sentimos, no se pudo agregar la nota';
     });
 };
 export const addCommentOnSubmit = (objNote) => {

@@ -1,7 +1,8 @@
-/* eslint-disable max-len */
-/* eslint-disable no-undef */
-export const signIn = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
-export const logIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
+export const signIn = (email, password) => firebase.auth()
+  .createUserWithEmailAndPassword(email, password);
+
+export const logIn = (email, password) => firebase.auth()
+  .signInWithEmailAndPassword(email, password);
 
 export const saveUsers = () => {
   const user = firebase.auth().currentUser;
@@ -44,6 +45,7 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
   .onSnapshot((querySnapshot) => {
     const dato = [];
     const user = firebase.auth().currentUser;
+    console.log(firebase.auth());
     querySnapshot.forEach((doc) => {
       if (doc.data().privacy === 'public') {
         dato.push({ id: doc.id, ...doc.data() });
@@ -66,7 +68,6 @@ export const addComment = (textComment, objNote) => firebase.firestore().collect
 
 export const countLove = (objNote) => {
   const user = firebase.auth().currentUser;
-  console.log(typeof user);
   firebase.firestore().collection('notes').doc(objNote.id).update({
     love: firebase.firestore.FieldValue.increment(1),
     lovers: objNote.lovers.concat([

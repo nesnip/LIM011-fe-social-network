@@ -1,7 +1,4 @@
-/* eslint-disable import/named */
-/* eslint-disable import/extensions */
 import {
-  // eslint-disable-next-line max-len
   signOutSubmit, addNoteOnSubmit, deleteNoteOnClick, editNoteOnSubmit,
   countLoveOnClick, addCommentOnSubmit, deleteCommentsOnClick,
 } from '../view-controller.js';
@@ -49,6 +46,7 @@ const itemNote = (objNote) => {
       <p id="date-comment">${element.dateComment}</p>
     `;
     ul.appendChild(liElement);
+    // Agregando evento click a btn borrar comentario
     liElement.querySelector(`#btn-deleted-${index}`)
       .addEventListener('click', () => {
         console.log(`#btn-deleted-${index}`);
@@ -56,7 +54,7 @@ const itemNote = (objNote) => {
       });
   });
 
-  // agregando evemto click al btn pen para editar
+  // agregando evento click al btn pen para editar
   divElement.querySelector(`#btn-pen-${objNote.id}`)
     .addEventListener('click', () => {
       const post = document.querySelector(`#texto-post-${objNote.id}`);
@@ -67,10 +65,12 @@ const itemNote = (objNote) => {
         <button id="cancel">Cancelar</button>
       </div>
       `;
-      console.log(post.querySelector(`#btn-edit-${objNote.id}`));
-      // post.querySelector('#cancel').addEventListener('click', () => );
+      // Agregando evento click al btn cancelar edición de post
+      post.querySelector('#cancel').addEventListener('click', () => {
+        post.innerHTML = `<p>${objNote.title}</p>`;
+      });
       post.querySelector('#input-edit-note').value = objNote.title;
-      // agregando evento click al btn editar nota
+      // Agregando evento click al btn editar post
       post.querySelector(`#btn-edit-${objNote.id}`)
         .addEventListener('click', () => editNoteOnSubmit(objNote));
       return post;

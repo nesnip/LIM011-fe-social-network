@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 // configurando firebase mock
 // iniciando tests
 

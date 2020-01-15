@@ -1,8 +1,4 @@
-/* eslint-disable default-case */
 import SignIn from './view/signin.js';
-// eslint-disable-next-line import/no-named-as-default
-// eslint-disable-next-line import/no-named-as-default-member
-// eslint-disable-next-line import/no-named-as-default
 import LogIn from './view/login.js';
 import Home from './view/home.js';
 import { getNotes } from './controller/controller-firebase.js';
@@ -25,6 +21,7 @@ const viewTmp = (routers) => {
         root.appendChild(Home(notes));
       });
       break;
+    default:
   }
 };
 
