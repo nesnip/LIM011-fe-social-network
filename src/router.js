@@ -21,6 +21,7 @@ const viewTmp = (routers) => {
     case 'Home':
       getNotes((notes) => {
         root.innerHTML = '';
+        console.log(notes);
         root.appendChild(Home(notes));
       });
       break;

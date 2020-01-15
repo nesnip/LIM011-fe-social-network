@@ -66,6 +66,7 @@ export const addComment = (textComment, objNote) => firebase.firestore().collect
 
 export const countLove = (objNote) => {
   const user = firebase.auth().currentUser;
+  console.log(typeof user);
   firebase.firestore().collection('notes').doc(objNote.id).update({
     love: firebase.firestore.FieldValue.increment(1),
     lovers: objNote.lovers.concat([
