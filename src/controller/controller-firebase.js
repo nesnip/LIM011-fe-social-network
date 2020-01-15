@@ -45,7 +45,7 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
   .onSnapshot((querySnapshot) => {
     const dato = [];
     const user = firebase.auth().currentUser;
-    console.log(firebase.auth());
+    console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       if (doc.data().privacy === 'public') {
         dato.push({ id: doc.id, ...doc.data() });

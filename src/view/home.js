@@ -34,27 +34,7 @@ const itemNote = (objNote) => {
     </div>
   `;
 
-  // Mostrando cada comentario de cada post
-  objNote.comments.forEach((element, index) => {
-    const ul = divElement.querySelector('#aca-se-pega');
-    const liElement = document.createElement('li');
-    liElement.innerHTML = `
-      <img src="${element.photoUserComment}" class="avatar-usuario">
-      <span>${element.userComment}</span>
-      <span id="btn-deleted-${index}">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
-      <p id="element-comment">${element.comment}</p>
-      <p id="date-comment">${element.dateComment}</p>
-    `;
-    ul.appendChild(liElement);
-    // Agregando evento click a btn borrar comentario
-    liElement.querySelector(`#btn-deleted-${index}`)
-      .addEventListener('click', () => {
-        console.log(`#btn-deleted-${index}`);
-        deleteCommentsOnClick(objNote, index);
-      });
-  });
-
-  // agregando evento click al btn pen para editar
+  // Agregando evento click al btn pen para MOSTRAR INPUT Y BOTÓN EDITAR
   divElement.querySelector(`#btn-pen-${objNote.id}`)
     .addEventListener('click', () => {
       const post = document.querySelector(`#texto-post-${objNote.id}`);
@@ -65,33 +45,54 @@ const itemNote = (objNote) => {
         <button id="cancel">Cancelar</button>
       </div>
       `;
-      // Agregando evento click al btn cancelar edición de post
+      // Agregando evento click al btn CANCELAR EDICIÓN de post
       post.querySelector('#cancel').addEventListener('click', () => {
         post.innerHTML = `<p>${objNote.title}</p>`;
       });
       post.querySelector('#input-edit-note').value = objNote.title;
-      // Agregando evento click al btn editar post
+      // Agregando evento click al btn EDITAR POST
       post.querySelector(`#btn-edit-${objNote.id}`)
         .addEventListener('click', () => editNoteOnSubmit(objNote));
       return post;
     });
 
+  // Agregando evento click a btn comentar para AGREGAR COMENTARIO
   divElement.querySelector(`#btn-comment-${objNote.id}`).addEventListener('click', () => {
     const comment = document.querySelector(`#comments-${objNote.id}`);
     comment.innerHTML = `
-     <textarea id="input-comment-note" placeholder="Escribir un comentario..."></textarea> 
-    <span id="btn-add-${objNote.id}"><img id="btn-add-comment" src="imagenes/send.png" title="agregar"/></span>
+      <textarea id="input-comment-note" placeholder="Escribir un comentario..."></textarea> 
+      <span id="btn-add-${objNote.id}"><img id="btn-add-comment" src="imagenes/send.png" title="agregar"/></span>
      `;
+    // Evento click a btn add comment
     comment.querySelector(`#btn-add-${objNote.id}`)
       .addEventListener('click', () => addCommentOnSubmit(objNote));
     return comment;
   });
 
-  // agregando evento click al btn love
+  // MOSTRANDO COMENTARIOS de cada post
+  /* objNote.comments.forEach((element, index) => {
+    const ul = divElement.querySelector('#aca-se-pega');
+    const liElement = document.createElement('li');
+    liElement.innerHTML = `
+      <img src="${element.photoUserComment}" class="avatar-usuario">
+      <span>${element.userComment}</span>
+      <span id="btn-deleted-${index}">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
+      <p id="element-comment">${element.comment}</p>
+    `;
+    ul.appendChild(liElement);
+    // Agregando evento click a btn BORRAR COMENTARIO
+    liElement.querySelector(`#btn-deleted-${index}`)
+      .addEventListener('click', () => {
+        console.log(`#btn-deleted-${index}`);
+        deleteCommentsOnClick(objNote, index);
+      });
+  });
+ */
+  // Agregando evento click al btn LOVE de un post
   divElement.querySelector('#love')
     .addEventListener('click', () => countLoveOnClick(objNote));
 
-  // agregando evento de click al btn eliminar una nota
+  // Agregando evento de click al btn ELIMINAR UNA NOTA
   divElement.querySelector(`#btn-deleted-${objNote.id}`)
     .addEventListener('click', () => deleteNoteOnClick(objNote));
 
