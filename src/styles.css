@@ -8,7 +8,6 @@ body {
 
 form{
   background-image: url(https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1831&q=80);
-/*   background-image: url(./imagenes/imagen-fondo.jpg);*/  
   background-size: cover;
   display: flex;
   justify-content: flex-end;
@@ -17,24 +16,25 @@ form{
 }
 
 h2 {
-  font-family: 'Lobster', cursive;
-  font-size: 45px;
-  color: #f99696;
+  font-family: 'Comfortaa', cursive;
+  font-size: 37px;
+  color: #52585E;
   margin: 0 0 15px;
+  font-weight: 900;
 }
 h3 {
   font-family: 'Lobster', cursive;
   font-size: 30px;
-  color: #ff75d6;
+  color: #52585E;
 }
 
 p {
-  color: #52585e;
+  color: #3F4045;
 }
 
 .container-form {
-  width: 330px;
-  height: 480px;
+  width: 380px;
+  height: 520px;
   align-content: center;
   border-radius: 9px;
   border: 1px solid #d3dce6;
@@ -52,7 +52,7 @@ p {
   display: block;
   margin-top: 15px;
   padding: 0 5px;
-  width: 80%;
+  width: 77%;
   height: 40px;
   border: 1px solid #d3dce6;
   border-radius: 5px;
@@ -79,12 +79,11 @@ p {
   width: 80%;
   height: 40px;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 500;
   color: #ffffff;
   border-radius: 5px;
-  background: rgba(219, 57, 52, 0.76);
-  background: #5dcad8;
-  /* background: #FFC857;*/
+  background: #52cad8;
   cursor: pointer;
 }
 
@@ -122,8 +121,8 @@ p {
 /* css de home */
 
 .home-style {
-  background-image: url(./imagenes/fondo2.jpg);
   min-height: 100vh;
+  background-color: #fafbfc;
 }
 
 ul {
@@ -131,7 +130,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(46, 202, 216);
+  background-color: #52CAD8;
 }
 
 #btn-home, #btn-profile {
@@ -143,16 +142,19 @@ ul {
 
 li a {
   display: block;
-  color: white;
+  color: #ffffff;
   text-align: center;
+  font-size: 20px;
   padding: 14px 16px;
   text-decoration: none;
   cursor: pointer;
 }
 
-li a:hover:not(.active) {
-  background-color: rgb(56, 128, 146);
+li a:hover {
+  background-color: #4BB8C5;
+  border-radius: 5px;
 }
+
 textarea{
   width: 450px;
   height: 200px;
@@ -168,35 +170,31 @@ section{
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
+
 figure{
-  display:row;
   width: 90%;
-  /* width: 380px;
-  height: 250px; */
-  border: 1px solid #566a81; 
-  /* box-shadow: 5px 5px 10px #aaaaaa; */
-  /* border-radius: 9px 0px; */
-  border: 1px solid #d3dce6;
   border: none;
+  border: 1px solid #d3dce6;
+  border-radius: 9px;
 }
+
 .portada{
-  background-color: rgba(157, 247, 255, 0.767);
+  background-color: #B8E9EF;
   width: 100%;
-  height: 100px;
+  height: 110px;
   text-align: center;
   border: 3px solid #9acfd6;
   border: none;
   border-radius: 9px 9px 0 0;
 }
 .info-usuario{
-  /* border: 2px solid #566a81; */   
   background-color: rgb(234, 248, 255);
   width: 100%;
-  height: 144px;
+  height: 140px;
   display: flex; 
   align-items: center;
-  /* border: 1px solid #d3dce6; */
   border: none;
   border-radius: 0 0 9px 9px;
 }
@@ -217,6 +215,7 @@ figure{
   margin-right: 0px;
   margin-left: 0px;
   margin-bottom: 0;
+  font-size: 23px;
 }
 
 .foto-usuario{
@@ -238,7 +237,6 @@ main {
   border: 1px solid #d3dce6;
   background-color: #dbfbfce6;
   text-align: center;
-  box-shadow: 5px 5px 10px #aaaaaa;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
@@ -247,6 +245,7 @@ main {
 #btn-add-note{
   margin-left: 285px;
 }
+
 #btn-subir-img{
   margin-left: 15px;
 }
@@ -256,16 +255,16 @@ main {
 
 #btn-add-note, #btn-subir-img{
   text-align: center;
-    color: rgb(24, 32, 32);
-    display: inline-block;
-    font-size: 10px;
-    margin: 20px;
-    padding: 8px 0;
-    width: 100px;
-    background-color: rgb(56, 216, 216);
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
+  color: #52585E;
+  display: inline-block;
+  font-size: 18px;
+  margin: 20px;
+  padding: 8px 0;
+  width: 100px;
+  background-color: rgb(56, 216, 216);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 
 #btn-add-note:hover, #btn-subir-img:hover {
@@ -283,7 +282,7 @@ main {
   height: 100px;
   text-align: center;
   margin-top: 0 px;
-  
+  font-size: 22px;
 }
 .btn-post{
   text-align: end;
@@ -293,6 +292,12 @@ main {
   height: 30px;
   width: 30px;
   margin-left: 5px;
+  cursor: pointer;
+}
+
+#btn-comment {
+  height: 30px;
+  width: 30px;
   cursor: pointer;
 }
 
@@ -317,7 +322,6 @@ main {
   border-radius: 9px;
   border: 1px solid #d3dce6;
   background-color: #eaf8ff;
-  box-shadow: 5px 5px 10px #aaaaaa;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
@@ -327,24 +331,66 @@ main {
 #input-edit-note {
   height: 30px;
 }
+
 #input-comment-note {
   height: 30px;
 }
-#btn-pen {
-  width: 7%;
+
+#btn-pen, #trash {
   cursor: pointer;
 }
-#privacy {
-width: 100px;
-height: 30px;
-padding-left: 18px;
 
+#privacy {
+  width: 100px;
+  height: 30px;
+  padding-left: 18px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
 }
+
 .post-privacy{
   margin-top: 20px;
   margin-right: 20px;
   text-align: end;
 }
+
+#comments-container {
+  background-color: #ddf1fe;
+  border-radius: 9px;
+  border: 1px solid #d3dce6;
+}
+
+.comment-li {
+  border: 1px solid #d3dce6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.user-comment {
+  margin-left: 20px;
+  font-size: 19px;
+  flex-grow: 2;
+}
+
+.avatar-comment {
+  width: 60px;
+  height: auto;
+  margin: 1% 0 0 1%;
+}
+
+#element-comment {
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  margin: 8px;
+}
+
+.delete-comment {
+  margin-right: 5px;
+}
+
 .comments{
   display: flex;
   justify-content: center;
@@ -356,8 +402,6 @@ padding-left: 18px;
 @media only screen and (min-width: 768px) {
   figure {
     width: 380px;
-    box-shadow: 5px 5px 10px #aaaaaa;
-    border-radius: 9px;
     margin-left: 0;
   }
 }

@@ -24,14 +24,10 @@ const itemNote = (objNote) => {
       </section>
       <div class = "reactions">
         <span id ="reaction-love">${objNote.love} </span> <img src="https://purepng.com/public/uploads/medium/heart-icon-s4k.png" id="love" />
-        <span id="btn-comment-${objNote.id}">'<img id="btn-comment" src="imagenes/comment.png" title="comentar"/></span> 
+        <span class="btn-comment-cont" id="btn-comment-${objNote.id}"><img id="btn-comment" src="imagenes/comment.png" title="comentar"/></span> 
       </div>
     </div>
-    <ul id="aca-se-pega"></ul>
-    <div class = "comments">
-      <div id = "comments-${objNote.id}">
-      </div>
-    </div>
+    <ul id="comments-container"></ul>
   `;
 
   // Agregando evento click al btn pen para MOSTRAR INPUT Y BOTÓN EDITAR
@@ -71,12 +67,13 @@ const itemNote = (objNote) => {
 
   // MOSTRANDO COMENTARIOS de cada post
   objNote.comments.forEach((element, index) => {
-    const ul = divElement.querySelector('#aca-se-pega');
+    const ul = divElement.querySelector('#comments-container');
     const liElement = document.createElement('li');
+    liElement.classList.add('comment-li');
     liElement.innerHTML = `
-      <img src="${element.photoUserComment}" class="avatar-usuario">
-      <span>${element.userComment}</span>
-      <span id="btn-deleted-${index}">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
+      <img src="${element.photoUserComment}" class="avatar-usuario avatar-comment">
+      <span class="user-comment">${element.userComment}</span>
+      <span id="btn-deleted-${index}" class="delete-comment">${user.uid === element.uidComment || user.uid === objNote.uid ? '<img id="trash" src="imagenes/remove.png" title="Eliminar"/>' : ''}</span>
       <p id="element-comment">${element.comment}</p>
     `;
     ul.appendChild(liElement);
@@ -133,7 +130,7 @@ export default (notes) => {
       </div>
         <textarea name="" id="input-new-note" rows="4" cols="50" placeholder="¿Que quieres compartir?"></textarea>
         <section id="botones-post">
-        <button id="btn-subir-img"> imagen </button>
+        <button id="btn-subir-img"> Imagen </button>
         <button type="button" id="btn-add-note">Publicar</button>
         </section>
       </main>

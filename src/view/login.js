@@ -5,7 +5,7 @@ export default () => {
   const formContent = `
     <div class = "container-form">
       <form class="formulario">
-        <h2>My FitnesSpace</h2>
+        <h2>My Fitnesspace</h2>
           <input type="email" class="txt-form" id="email-login" placeholder="Ingrese E-mail">
           <input type="password" class="txt-form" id="password-login" placeholder = "Ingrese Contraseña">
         <button class="btn-form" id="btn-login" type="button"> Iniciar sesión </button>
