@@ -18,6 +18,8 @@ const viewTmp = (routers) => {
       getNotes((notes) => {
         root.innerHTML = '';
         console.log(notes);
+        console.log(window);
+        console.log(typeof global);
         root.appendChild(Home(notes));
       });
       break;

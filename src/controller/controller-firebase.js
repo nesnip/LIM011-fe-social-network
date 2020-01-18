@@ -29,7 +29,7 @@ export const addNote = (textNewNote, selectPrivacy) => firebase.firestore().coll
   user: firebase.auth().currentUser.displayName,
   avatar: firebase.auth().currentUser.photoURL,
   uid: firebase.auth().currentUser.uid,
-  date: firebase.firestore.Timestamp.fromDate(new Date()),
+  date: new Date(),
   privacy: selectPrivacy,
   love: 0,
   lovers: [],
@@ -45,7 +45,6 @@ export const getNotes = (callback) => firebase.firestore().collection('notes').o
   .onSnapshot((querySnapshot) => {
     const dato = [];
     const user = firebase.auth().currentUser;
-    console.log(querySnapshot);
     querySnapshot.forEach((doc) => {
       if (doc.data().privacy === 'public') {
         dato.push({ id: doc.id, ...doc.data() });
