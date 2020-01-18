@@ -24,7 +24,6 @@ describe('addNote', () => {
       const user = firebase.auth().currentUser;
       console.log(firebase.auth().currentUser);
       expect(user.isAnonymous).toBe(false);
-      done();
     });
     addNote('agregar un post', 'public')
       .then(() => getNotes(
