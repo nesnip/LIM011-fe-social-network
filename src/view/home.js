@@ -28,6 +28,10 @@ const itemNote = (objNote) => {
       </div>
     </div>
     <ul id="comments-container"></ul>
+    <div class = "comments">
+      <div id = "comments-${objNote.id}">
+      </div>
+    </div>
   `;
 
   // Agregando evento click al btn pen para MOSTRAR INPUT Y BOTÓN EDITAR
